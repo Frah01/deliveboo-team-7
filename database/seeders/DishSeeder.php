@@ -21,10 +21,10 @@ class DishSeeder extends Seeder
             $newDish = new Dish();
             $newDish->nome = $dish['nome'];
             $newDish->prezzo = $dish['prezzo'];
-            $newDish->ingredienti = $dish['ingredienti'];
+            $newDish->ingredienti = Dish::getIngredients($dish['ingredienti']);
             $newDish->immagine = $dish['immagine'];
             $newDish->disponibile = $dish['disponibile'];
-            $newDish->tipologie = $dish['tipologie'];
+            $newDish->tipologia = $dish['tipologia'];
             $newDish->slug = Str::slug($newDish->nome, '-');
             $newDish->save();
         }

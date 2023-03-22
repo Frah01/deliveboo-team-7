@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('cognome');
             $table->date('data');
-            $table->float('prezzo_totale', 5, 2)->unsigned();
+            $table->decimal('prezzo_totale', 5, 2)->unsigned();
             $table->string('indirizzo', 100);
             $table->string('telefono', 13)->nullable();
             $table->string('email', 50)->nullable();
