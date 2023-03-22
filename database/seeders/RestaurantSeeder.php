@@ -15,7 +15,7 @@ class RestaurantSeeder extends Seeder
      */
     public function run()
     {
-        $restaurants = config('db');
+        $restaurants = config('ristoranti');
         foreach ($restaurants as $restaurant) {
             $newRestaurant = new Restaurant();
             $newRestaurant->email = $restaurant['email'];

@@ -16,7 +16,7 @@ class DishSeeder extends Seeder
      */
     public function run()
     {
-        $dishes = config('db');
+        $dishes = config('piatti');
         foreach ($dishes as $dish) {
             $newDish = new Dish();
             $newDish->nome = $dish['nome'];
