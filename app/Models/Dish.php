@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Dish extends Model
 {
@@ -13,4 +14,9 @@ class Dish extends Model
         return $this->belongsToMany(Order::class);
     }
     use HasFactory;
+
+    public static function getIngredients($array)
+    {
+        return implode(',', $array);
+    }
 }

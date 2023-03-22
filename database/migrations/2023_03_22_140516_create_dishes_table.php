@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 100);
-            $table->float('prezzo', 5, 2)->unsigned();
-            $table->string('ingredienti', 100);
+            $table->string('nome', 200);
+            $table->decimal('prezzo', 5, 2)->unsigned();
+            $table->text('ingredienti');
             $table->string('immagine')->nullable();
             $table->string('slug');
             $table->boolean('disponibile')->default(1);
-            $table->string('tipologie', 50);
+            $table->string('tipologia', 50);
             $table->timestamps();
         });
     }
