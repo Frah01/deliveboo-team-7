@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
+
 
 
 class DishController extends Controller
@@ -18,7 +18,9 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        $dishes = Dish::all();
+        return view('admin.dishes.index', compact('dishes', 'categories'));
     }
 
     /**
