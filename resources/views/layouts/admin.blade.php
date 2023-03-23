@@ -55,30 +55,23 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}" href="{{route('admin.restaurants.index') }}">
                                     <i class="fa-solid fa-newspaper fa-lg fa-fw"></i> Ristoranti
                                 </a>
                             </li>
-
                             <li class="nav-item">
-                                
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dishes.index' ? 'bg-secondary' : '' }}" href="{{route('admin.dishes.index') }}">
-                                    <i class="fa-solid fa-list fa-lg fa-fw"></i> piatti
+                                    <i class="fa-solid fa-list fa-lg fa-fw"></i> Piatti
                                 </a>
                             </li>
-
                             <li class="nav-item">
-                                
-                               
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.categories.index' ? 'bg-secondary' : '' }}" href="{{route('admin.categories.index') }}">
+                                    <i class="fa-solid fa-tag fa-lg fa-fw"></i> Categorie
+                                </a>
                             </li>
-
                         </ul>
-
-
                     </div>
                 </nav>
-
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     @yield('content')
                 </main>

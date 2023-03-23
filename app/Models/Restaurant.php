@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,9 @@ class Restaurant extends Model
     public function users()
     {
         return $this->belongsTo(User::class);
+    }
+    public static function generateSlug($nome){
+        return Str::slug($nome, '-');
     }
 
     use HasFactory;

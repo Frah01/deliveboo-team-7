@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
-use App\Http\Controlers\Admin\CategoryController as CategoryController;
+use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\DishController as DishController;
-use App\Http\Controlers\Admin\OrderController as OrderController;
+use App\Http\Controllers\Admin\OrderController as OrderController;
 use App\Http\Controllers\Admin\RestaurantController as RestaurantController;
 /*
 |--------------------------------------------------------------------------
