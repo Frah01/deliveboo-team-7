@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
+
 
 class DishController extends Controller
 {
@@ -48,7 +50,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        return view('admin.dishes.show', compact('dish'));
     }
 
     /**
