@@ -7,6 +7,7 @@ use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 
 class DishController extends Controller
@@ -29,7 +30,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        return view( 'admin.dishes.create');
     }
 
     /**
@@ -40,7 +41,18 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        //
+      $form_data = $request->validated();
+     
+      $slug = Dish::generateSlug($request->nome);
+    
+      $form_data['slug'] = $slug; 
+     if($request->hasFile('immagine')){
+        $path = Storage::disk('public')->put('dish_image', $request->immagine);
+        $form_data['immagine'] = $path; 
+      }
+      $newDish = Dish::create($form_data);
+    
+      return redirect()->route('admin.dishes.index')->with('message', 'Piatto creato correttamente');
     }
 
     /**

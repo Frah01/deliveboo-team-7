@@ -2,9 +2,15 @@
 @section('content')
     <div class="container">
         <div class="row d-flex flex-wrap ">
-            <h1 class="col-12 my-5 text-info">
-                Elenco dei piatti: 
-            </h1>
+            
+                <h1 class="col-12 my-5 text-info">
+                    Elenco dei piatti: 
+                </h1>
+                <div>
+                    <a href="{{route('admin.dishes.create')}}" class="btn btn-primary">aggiungi nuovo piatto </a>
+                </div>
+           
+          
         @foreach ( $dishes as $dish )
         <div class="card-group">
             <a href="{{route('admin.dishes.show',  ['dish' => $dish['slug']])}}">
