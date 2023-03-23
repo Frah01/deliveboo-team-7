@@ -30,8 +30,10 @@
                 <label class="control-label">ingredienti</label>
                 <input type="text" name="ingredienti" class="form-control" placeholder="inserisci ingredienti">
             </div>
-            
-
+            <div class="form-group my-3">
+                <label class="control-label">tipologia</label>
+                <input type="text" name="tipologia" id="tipologia" class="form-control" placeholder="inserisci tipologia">
+            </div>
             <div class="form-group my-3">
                 <button type="submit" class="btn btn-success">salva</button>
             </div>

@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Dish extends Model
 {
     
-    protected $fillable = ['nome', 'prezzo', 'ingredienti', 'immagine', 'slug', 'disponibile', 'tipologie', 'restaurant_id'];
+    protected $fillable = ['nome', 'prezzo', 'ingredienti', 'immagine', 'slug', 'disponibile', 'tipologia', 'restaurant_id'];
     use HasFactory;
     
     public static function generateSlug($nome){
