@@ -74,7 +74,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        return view('admin.dishes.edit', compact('dish'));
     }
 
     /**
@@ -86,7 +86,26 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        //
+        {
+            $form_data = $request->validated();
+           
+            $slug = Dish::generateSlug($request->nome);
+          
+            $form_data['slug'] = $slug; 
+           if($request->hasFile('immagine')){
+            if($dish->immagine){
+                Storage::delete($dish->immagine);
+            }
+            $path = Storage::disk('public')->put('dish_image', $request->immagine);
+
+            $form_data['immagine'] = $path;
+              
+            }
+           
+           
+            $dish->update($form_data);
+            return redirect()->route('admin.dishes.index')->with('message', 'Piatto modificato correttamente');
+          }
     }
 
     /**
