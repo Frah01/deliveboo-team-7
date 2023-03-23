@@ -31,4 +31,13 @@ class StoreDishRequest extends FormRequest
           'immagine'=>['nullable','image']
         ];
     }
+    public function message(){
+        return[
+            'nome.required'=>'nome del piatto obbligatorio ',
+            'prezzo.required'=>'prezzo obbligatorio',
+            'ingredienti.required'=>'ingredienti obbligatori',
+            'tipologia.required'=>'tipologia piatto obbligatoria'
+        ];
+        
+    }
 }

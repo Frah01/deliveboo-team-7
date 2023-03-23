@@ -28,6 +28,9 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-square btn-danger confirm-delete-button m-1" data-title="{{$dish->nome}}"><i class="fas fa-trash" ></i></button>
                             </form>
+                            <a href="{{ route('admin.dishes.edit', $dish->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
+                                <i class="fas fa-edit"></i>
+                            </a>
                         </div>
                 </div>
             </a>
