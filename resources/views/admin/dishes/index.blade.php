@@ -6,8 +6,8 @@
                 Elenco dei piatti: 
             </h1>
         @foreach ( $dishes as $dish )
-        <div class="card-group">
-            <a href="{{route('admin.dishes.show',  ['dish' => $dish['slug']])}}">
+        <div class="card-group d-flex">
+            <a href="{{route('admin.dishes.show',  ['dish' => $dish['slug']])}}" class="">
                 <div class="card">
                     <img class="card-img-top" src="{{asset($dish->immagine)}}" alt="{{$dish->nome}}">
                         <div class="card-body">
