@@ -19,7 +19,7 @@
                     <div>
                         <h4 class="fw-semibold">Immagine</h4> 
                         <div class="d-flex my-2">
-                            <img class="img-fluid shadow" src="{{asset('storage/' .$dish->immagine)}}" alt="{{$dish->nome}}" class="w-50"> 
+                            <img class="img-fluid shadow" src="{{asset($dish->immagine)}}" alt="{{$dish->nome}}" class="w-50"> 
                         </div>
                     </div>
                     <div>

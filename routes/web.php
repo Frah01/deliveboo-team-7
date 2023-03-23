@@ -2,12 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-Use App\Http\Controlers\Admin\DashboardController as DashboardController;
-Use App\Http\Controlers\Admin\CategoryController as CategoryController;
-Use App\Http\Controlers\Admin\DishController as DishController;
-Use App\Http\Controlers\Admin\OrderController as OrderController;
-Use App\Http\Controlers\Admin\RestaurantController as RestaurantController;
-
+use App\Http\Controllers\Admin\DashboardController as DashboardController;
+use App\Http\Controlers\Admin\CategoryController as CategoryController;
+use App\Http\Controllers\Admin\DishController as DishController;
+use App\Http\Controlers\Admin\OrderController as OrderController;
+use App\Http\Controllers\Admin\RestaurantController as RestaurantController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth', 'verified'])->name('admin.')->group(function(){
+Route::middleware(['auth', 'verified'])->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
     Route::resource('dishes', DishController::class)->parameters(['dishes' => 'dish:slug']);
@@ -36,4 +35,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

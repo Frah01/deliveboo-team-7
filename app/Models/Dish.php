@@ -17,6 +17,6 @@ class Dish extends Model
 
     public static function getIngredients($array)
     {
-        return implode(',', $array);
+        return implode(', ', $array);
     }
 }

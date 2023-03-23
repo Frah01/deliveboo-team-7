@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Restaurant extends Model
 {
-    protected $fillable = ['nome', 'email', 'telefono', 'indirizzo', 'partita_iva', 'immagine', 'user_id'];
+    protected $fillable = ['nome', 'slug', 'email', 'telefono', 'indirizzo', 'partita_iva', 'immagine', 'user_id'];
     public function categories()
     {
         return $this->belongsToMany(Category::class);

@@ -9,19 +9,11 @@
         <div class="card-group">
             <a href="{{route('admin.dishes.show',  ['dish' => $dish['slug']])}}">
                 <div class="card">
-                    <img class="card-img-top" src="{{asset('storage/' .$dish->immagine)}}" alt="{{$dish->nome}}">
+                    <img class="card-img-top" src="{{asset($dish->immagine)}}" alt="{{$dish->nome}}">
                         <div class="card-body">
                             <h5 class="card-title">{{$dish->nome}}</h5>
                             <p class="card-text">Prezzo: {{$dish->prezzo}} euro</p>
-                            <p class="card-text">Ingredienti utilizzati: {{$dish->ingredienti}}</p>
-                            <p>Tecnologie:
-                                @forelse ($dish->categories as $category)
-                                <span>{{ $category->nome }}</span>
-                                @empty
-                                Nessuna categoria
-                                @endforelse
-                            </p>
-                            
+                            <p class="card-text">Ingredienti utilizzati: {{$dish->ingredienti}}</p> 
                         </div>
                 </div>
             </a>
