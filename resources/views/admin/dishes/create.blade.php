@@ -32,7 +32,13 @@
             </div>
             <div class="form-group my-3">
                 <label class="control-label">tipologia</label>
-                <input type="text" name="tipologia" id="tipologia" class="form-control" placeholder="inserisci tipologia">
+                <select name="tipologia" id="tipologia">
+                    <option value="1">antipasto</option>
+                    <option value="2">primo</option>
+                    <option value="3">secondo</option>
+                    <option value="4">dolce</option>
+                    <option value="5">bibita</option>
+                </select>
             </div>
             <div class="form-group my-3">
                 <button type="submit" class="btn btn-success">salva</button>
