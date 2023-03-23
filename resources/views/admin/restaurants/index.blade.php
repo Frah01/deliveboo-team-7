@@ -38,14 +38,12 @@
                                     </a>
                                     {{-- <a href="{{ route('admin.posts.edit', $post->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
                                         <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form class="d-inline-block" action="{{ route('admin.posts.destroy', $post->slug )}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-square btn-danger" type="submit">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                    </form> --}}
+                                    </a> --}}
+                                    <form class="d-inline-block" method="POST" action="{{route('admin.restaurants.destroy', ['restaurant' => $restaurant['slug']])}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-square btn-danger confirm-delete-button m-1" data-title="{{$restaurant->name}}"><i class="fas fa-trash" ></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -54,4 +52,5 @@
             </div>
         </div>
     </div>
+@include('partials.modal_delete')
 @endsection
