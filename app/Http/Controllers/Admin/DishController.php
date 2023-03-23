@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use Http\Controllers\Controller;
 
-use App\Models\Restaurant;
-use App\Http\Requests\StoreRestaurantRequest;
-use App\Http\Requests\UpdateRestaurantRequest;
+use App\Models\Dish;
+use App\Http\Requests\StoreDishRequest;
+use App\Http\Requests\UpdateDishRequest;
 
-class RestaurantController extends Controller
+class DishController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        $dishes = Dish::all();
+        return view('admin.dishes.index', compact('dishes', 'categories'));
     }
 
     /**
@@ -31,10 +34,10 @@ class RestaurantController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreRestaurantRequest  $request
+     * @param  \App\Http\Requests\StoreDishRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRestaurantRequest $request)
+    public function store(StoreDishRequest $request)
     {
         //
     }
@@ -42,10 +45,10 @@ class RestaurantController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Restaurant  $restaurant
+     * @param  \App\Models\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
+    public function show(Dish $dish)
     {
         //
     }
@@ -53,10 +56,10 @@ class RestaurantController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Restaurant  $restaurant
+     * @param  \App\Models\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function edit(Restaurant $restaurant)
+    public function edit(Dish $dish)
     {
         //
     }
@@ -64,11 +67,11 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateRestaurantRequest  $request
-     * @param  \App\Models\Restaurant  $restaurant
+     * @param  \App\Http\Requests\UpdateDishRequest  $request
+     * @param  \App\Models\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
+    public function update(UpdateDishRequest $request, Dish $dish)
     {
         //
     }
@@ -76,10 +79,10 @@ class RestaurantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Restaurant  $restaurant
+     * @param  \App\Models\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Restaurant $restaurant)
+    public function destroy(Dish $dish)
     {
         //
     }
