@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Http\Controllers\Controller;
-
 use App\Models\Restaurant;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
+use App\Http\Controllers\Controller;
 
 class RestaurantController extends Controller
 {
@@ -16,7 +15,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        $restaurants = Restaurant::all();
+        return view('admin.restaurants.index', compact('restaurants'));
     }
 
     /**
