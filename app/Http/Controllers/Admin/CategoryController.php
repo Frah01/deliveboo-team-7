@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -15,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -25,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -36,7 +38,15 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $form_data = $request->validated();
+
+        $slug = Str::slug($request->nome, '-');
+
+        $form_data['slug'] = $slug;
+
+        $new_category = Category::create($form_data);
+
+        return redirect()->route('admin.categories.index')->with('message', 'Categoria creata correttamente!');
     }
 
     /**
@@ -47,7 +57,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -58,7 +68,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -70,7 +80,12 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $form_data = $request->validated();
+
+        //possso farlo perchè ho definito il fillable
+        $category->update($form_data);
+
+        return redirect()->route('admin.categories.index')->with('message', 'Modifiche correttamente eseguite');
     }
 
     /**
@@ -81,6 +96,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('admin.categories.index')->with('message', 'Categoria cancellata correttamente');
     }
 }
