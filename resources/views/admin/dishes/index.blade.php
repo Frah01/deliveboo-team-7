@@ -5,7 +5,10 @@
             <h1 class="col-12 my-5 text-info">
                 Elenco dei piatti: 
             </h1>
-              @if(session('message'))
+            <div>
+                <a href="{{route('admin.dishes.create')}}" class="btn btn-primary">aggiungi nuovo piatto </a>
+            </div>
+            @if(session('message'))
             <div class="alert alert-success my-3" >
                 {{session('message')}}
             </div>
