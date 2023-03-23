@@ -1,12 +1,10 @@
 <?php
 
-
 namespace App\Http\Controllers\Admin;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Controllers\Controller;
-
 
 
 class OrderController extends Controller
