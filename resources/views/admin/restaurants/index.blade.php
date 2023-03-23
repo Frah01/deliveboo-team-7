@@ -36,9 +36,12 @@
                                     <a href="{{ route('admin.restaurants.show', $restaurant->slug)}}" title="Visualizza" class="btn btn-sm btn-square btn-primary">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    {{-- <a href="{{ route('admin.posts.edit', $post->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
+                                    <a href="{{ route('admin.restaurants.create', $restaurant->slug)}}" title="Aggiungi" class="btn btn-sm btn-square btn-success">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                    <a href="{{ route('admin.restaurants.edit', $restaurant->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
                                         <i class="fas fa-edit"></i>
-                                    </a> --}}
+                                    </a>
                                     <form class="d-inline-block" method="POST" action="{{route('admin.restaurants.destroy', ['restaurant' => $restaurant['slug']])}}">
                                         @csrf
                                         @method('DELETE')

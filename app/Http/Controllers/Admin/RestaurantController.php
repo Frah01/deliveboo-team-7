@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Restaurant;
+use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Controllers\Controller;
@@ -28,7 +30,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.restaurants.create', compact('categories'));
     }
 
     /**
@@ -39,7 +42,18 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        //
+        $form_data = $request->validated();
+        $slug = Restaurant::generateSlug($request->nome, '-');
+        $form_data['slug'] = $slug;
+        if($request->has('immagine')){
+            $path = Storage::disk('public')->put('restaurant_images', $request->immagine);
+            $form_data['immagine'] = $path;
+        } 
+
+        $newRestaurant = Restaurant::create($form_data);
+        
+
+        return redirect()->route('admin.restaurants.index');
     }
 
     /**
@@ -61,7 +75,8 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        $categories = Category::all();
+        return view('admin.restaurants.edit', compact('restaurant', 'categories'));
     }
 
     /**
@@ -73,7 +88,25 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        $form_data = $request->validated();
+    
+       $slug = Restaurant::generateSlug($request->nome, '-');
+   
+       $form_data['slug'] = $slug;
+
+       if($request->has('immagine')){
+       
+        if($restaurant->immagine){
+            Storage::delete($restaurant->immagine);  
+        }
+        $path = Storage::disk('public')->put('restaurant_images', $request->immagine);
+        
+        $form_data['immagine'] = $path;
+    }
+   
+       $restaurant->update($form_data);
+       
+       return redirect()->route('admin.restaurants.index');
     }
 
     /**
