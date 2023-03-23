@@ -1,7 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+Use App\Http\Controlers\Admin\DashboardController as DashboardController;
+Use App\Http\Controlers\Admin\CategoryController as CategoryController;
+Use App\Http\Controlers\Admin\DishController as DishController;
+Use App\Http\Controlers\Admin\OrderController as OrderController;
+Use App\Http\Controlers\Admin\RestaurantController as RestaurantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +23,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->name('admin.')->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
+    Route::resource('dishes', DishController::class)->parameters(['dishes' => 'dish:slug']);
+    Route::resource('categories', CategoryController::class)->parameters(['categories' => 'category:slug']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
