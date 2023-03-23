@@ -42,7 +42,7 @@
                                     <form class="d-inline-block" method="POST" action="{{route('admin.restaurants.destroy', ['restaurant' => $restaurant['slug']])}}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-square btn-danger confirm-delete-button m-1" data-title="{{$restaurant->name}}"><i class="fas fa-trash" ></i></button>
+                                        <button type="submit" class="btn btn-sm btn-square btn-danger confirm-delete-button m-1" data-title="{{$restaurant->nome}}"><i class="fas fa-trash" ></i></button>
                                     </form>
                                 </td>
                             </tr>

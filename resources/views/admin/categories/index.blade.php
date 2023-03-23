@@ -40,13 +40,11 @@
                                     <a href="{{ route('admin.categories.edit', $category->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    {{-- <form class="d-inline-block" action="{{ route('admin.categories.destroy', $category->slug )}}" method="POST">
+                                    <form class="d-inline-block" method="POST" action="{{route('admin.categories.destroy', ['category' => $category['slug']])}}">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-sm btn-square btn-danger delete-button" category="submit" title="Cancella">
-                                            <i class="fas fa-trash text-black"></i>
-                                        </button>
-                                    </form> --}}
+                                        <button type="submit" class="btn btn-sm btn-square btn-danger confirm-delete-button m-1" data-title="{{$category->nome}}"><i class="fas fa-trash" ></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @empty
@@ -65,5 +63,5 @@
             </div>
         </div>
     </div>
-{{-- @include('partials.modal_delete') --}}
+@include('partials.modal_delete')
 @endsection
