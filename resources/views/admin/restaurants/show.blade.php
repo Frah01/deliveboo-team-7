@@ -17,7 +17,7 @@
             <strong>Slug:</strong><p>{{$restaurant->slug}}</p>
             <strong>titolo</strong>
             <p>{{$restaurant->nome}}</p>
-            <img src="{{asset('storage/' .$restaurant->immagine)}}" class="cover-img img img-fluid" alt="{{$restaurant->nome}}">
+            <img src="{{asset($restaurant->immagine)}}" class="cover-img img img-fluid" alt="{{$restaurant->nome}}">
             <strong>indirizzo</strong>
             <p>{{$restaurant->indirizzo}}</p>
             <strong>numero di telefono</strong>

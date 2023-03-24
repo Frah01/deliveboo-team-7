@@ -9,7 +9,7 @@
                         <h2>ELENCO RISTORANTI</h2>
                     </div>
                     <div>
-                        <a href="{{ route('admin.restaurants.create') }}" class="btn btn-sm btn-primary">Aggiungi categoria</a>
+                        <a href="{{ route('admin.restaurants.create') }}" class="btn btn-sm btn-primary">Aggiungi ristorante</a>
                     </div>
                 </div>
                 <hr>

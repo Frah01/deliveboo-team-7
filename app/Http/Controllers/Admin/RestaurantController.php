@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -19,7 +19,17 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::all();
+        //recupera l'utente attualmente loggato
+        $user = Auth::user();
+        $user_id = $user->id;
+
+        if($user_id == 1){
+            $restaurants = Restaurant::all();
+        }
+        else{
+            $restaurants = Restaurant::where('user_id', $user_id)->get();
+        }
+
         return view('admin.restaurants.index', compact('restaurants'));
     }
 
@@ -43,8 +53,10 @@ class RestaurantController extends Controller
     public function store(StoreRestaurantRequest $request)
     {
         $form_data = $request->validated();
+        $user = Auth::user();
         $slug = Restaurant::generateSlug($request->nome, '-');
         $form_data['slug'] = $slug;
+        $form_data['user_id'] = $user->id;
         if($request->has('immagine')){
             $path = Storage::disk('public')->put('restaurant_images', $request->immagine);
             $form_data['immagine'] = $path;
@@ -64,7 +76,11 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        return view('admin.restaurants.show', compact('restaurant'));
+        $user = Auth::user();
+        if($user->id == $restaurant->user_id)
+            return view('admin.restaurants.show', compact('restaurant'));
+        else
+            return redirect()->route('admin.restaurants.index')->with('warning', 'Non puoi visualizzare i post di un altro utente');
     }
 
     /**

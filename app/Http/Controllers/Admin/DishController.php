@@ -4,11 +4,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Dish;
+use App\Models\Restaurant;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
@@ -19,7 +20,19 @@ class DishController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::all();
+        //recupera l'utente attualmente loggato
+        $user = Auth::user();
+        $user_id = $user->id;
+        $restaurant = Restaurant::where('user_id', $user_id)->first();
+        $restaurant_id = $restaurant->id;
+
+        if($user_id == 1){
+            $dishes = Dish::all();
+        }
+        else{
+            $dishes = Dish::where('restaurant_id', $restaurant_id)->get();
+        }
+
         return view('admin.dishes.index', compact('dishes'));
     }
 
@@ -41,18 +54,20 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-      $form_data = $request->validated();
-     
-      $slug = Dish::generateSlug($request->nome);
-    
-      $form_data['slug'] = $slug; 
-     if($request->hasFile('immagine')){
-        $path = Storage::disk('public')->put('dish_image', $request->immagine);
-        $form_data['immagine'] = $path; 
-      }
-      $newDish = Dish::create($form_data);
-    
-      return redirect()->route('admin.dishes.index')->with('message', 'Piatto creato correttamente');
+        $form_data = $request->validated();
+        
+        $slug = Dish::generateSlug($request->nome);
+        // $user = Auth::user();
+
+        $form_data['slug'] = $slug;
+        // $form_data['user_id'] = $user->id;
+        if($request->hasFile('immagine')){
+            $path = Storage::disk('public')->put('dish_image', $request->immagine);
+            $form_data['immagine'] = $path; 
+        }
+        $newDish = Dish::create($form_data);
+        
+        return redirect()->route('admin.dishes.index')->with('message', 'Piatto creato correttamente');
     }
 
     /**
@@ -63,7 +78,13 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        return view('admin.dishes.show', compact('dish'));
+        $user = Auth::user();
+        $user_id = $user->id;
+        $restaurant = Restaurant::where('user_id', $user_id)->first();
+        if($restaurant->id == $dish->resturant_id)
+            return view('admin.dishes.show', compact('dish'));
+        else
+            return redirect()->route('admin.dishes.index')->with('warning', 'Non puoi visualizzare i post di un altro utente');
     }
 
     /**
