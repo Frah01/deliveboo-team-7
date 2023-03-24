@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="jumbotron-deliveroo">
+<div class="jumbotron-deliveroo flex-carosello">
     <div class="title-jumbo">
         <h1 >Benvenuto su Deliveboo! Ordina i tuoi piatti preferiti nella città di <strong> Roma </strong>comodamente da casa tua!</h1>
     </div>
