@@ -1,2 +1,12 @@
+
+@use './restaurants/restaurants.scss';
 @import '~bootstrap/scss/bootstrap';
 @import '~resources/scss/dashboard/dashboard.scss';
+
+ul {
+    list-style-type: none;
+}
+
+
+
+
