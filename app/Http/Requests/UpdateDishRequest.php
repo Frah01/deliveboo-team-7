@@ -24,20 +24,20 @@ class UpdateDishRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome'=>['required'],
-            'prezzo'=>['required'],
-            'ingredienti'=>['required'],
-            'tipologia'=>['required'],
-            'immagine'=>['nullable','image']
+            'nome' => ['required'],
+            'prezzo' => ['required'],
+            'ingredienti' => ['required'],
+            'tipologia' => ['required'],
+            'immagine' => ['nullable', 'image']
         ];
     }
-    public function message(){
-        return[
-            'nome.required'=>'nome del piatto obbligatorio ',
-            'prezzo.required'=>'prezzo obbligatorio',
-            'ingredienti.required'=>'ingredienti obbligatori',
-            'tipologia.required'=>'tipologia piatto obbligatoria'
+    public function messages()
+    {
+        return [
+            'nome.required' => 'nome del piatto obbligatorio ',
+            'prezzo.required' => 'prezzo obbligatorio',
+            'ingredienti.required' => 'ingredienti obbligatori',
+            'tipologia.required' => 'tipologia piatto obbligatoria'
         ];
-        
     }
 }
