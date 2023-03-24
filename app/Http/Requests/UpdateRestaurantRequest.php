@@ -30,7 +30,8 @@ class UpdateRestaurantRequest extends FormRequest
             'immagine' => ['nullable' , 'image'],
             'email' => ['nullable', 'max:50'],
             'indirizzo' => ['required', 'max:100'],
-            'partita_iva' => ['required', 'max:11']
+            'partita_iva' => ['required', 'max:11'],
+            'categories'=>['exists:categories,id'],
         ];
     }
 

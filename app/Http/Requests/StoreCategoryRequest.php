@@ -27,4 +27,12 @@ class StoreCategoryRequest extends FormRequest
             'nome' => ['required', 'unique:categories', 'max:20'],
         ];
     }
+
+    public function messages(){
+        
+            return[
+                'nome.required' => 'Inserisci una categoria al ristorante!',
+            ];
+        
+    }
 }

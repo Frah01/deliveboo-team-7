@@ -71,6 +71,19 @@
                     <div class="text-danger">{{$message}}</div>
                     @enderror
                 </div>
+                <div class="mb-3 form-group">
+                    <div>
+                        <label for="nome" class="control-label">categoria: </label>
+                    </div>
+                    
+                    @foreach ($categories as $category)
+                    <input class="mx-2" type="checkbox" value="{{$category->id}}" name="categories[]">
+                    <label class="form-check-label">{{$category->nome}}</label>  
+                    @endforeach
+                </div>
+                @error('categoria')
+                    <div class="text-danger">{{$message}}</div>
+                @enderror
                 <button type="submit" class="btn btn-success my-3">
                     Salva
                 </button>

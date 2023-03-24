@@ -16,6 +16,11 @@
                   <p class="card-text"><span class="fw-semibold">Telefono: </span>{{$restaurant->telefono}}</p>
                   <p class="card-text"><span class="fw-semibold">Email: </span>{{$restaurant->email}}</p>
                   <p class="card-text"><span class="fw-semibold">Partita Iva: </span>{{$restaurant->partita_iva}}</p>
+                  <p class="card-text"><span class="fw-semibold">Categoria:  @forelse($restaurant->categories as $category)
+                <p>{{$category->nome}}</p>
+                @empty
+                <p>nessuna nessuna categoria selezionata</p> 
+                @endforelse</p>
                 </div>
             </div>
         </div>

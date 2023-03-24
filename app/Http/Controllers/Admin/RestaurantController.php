@@ -67,7 +67,11 @@ class RestaurantController extends Controller
         } 
 
         $newRestaurant = Restaurant::create($form_data);
-        
+
+        if($request->has('categories')){
+            $newRestaurant->categories()->attach($request->categories);
+        }
+
         return redirect()->route('admin.restaurants.index');
     }
 
@@ -124,6 +128,9 @@ class RestaurantController extends Controller
     }
    
        $restaurant->update($form_data);
+       if ($request->has('categories')) {
+        $restaurant->categories()->sync($request->categories);
+       }
        
        return redirect()->route('admin.restaurants.index');
     }
@@ -137,6 +144,7 @@ class RestaurantController extends Controller
     public function destroy(Restaurant $restaurant)
     {
         $restaurant->delete();
+        $restaurant->categories()->sync([]);
         return redirect()->route('admin.restaurants.index', compact('restaurant'))->with('message', 'Ristorante eliminato correttamente');
     }
 }
