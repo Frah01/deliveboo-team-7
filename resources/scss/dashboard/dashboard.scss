@@ -1,5 +1,6 @@
 .deliveboo-navbar {
     background-color: #00CDBE;
+    height: 10vh;
     // background: #D1EB99;
     // background: -webkit-linear-gradient(bottom, #D1EB99, #00CDBE);
     // background: -moz-linear-gradient(bottom, #D1EB99, #00CDBE);
@@ -97,9 +98,6 @@
     background: linear-gradient(to top, rgba(209, 235, 153, 1.0), rgba(1, 204, 189, 1.0));
 }
 
-nav {
-    height: 10vh;
-}
 
 
 .jumbotron-deliveroo {
@@ -135,7 +133,7 @@ nav {
         box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
         height: 150px;
         overflow: hidden;
-        margin-top: 280px;
+        margin-bottom: 20px;
 
 
         &::after {
@@ -180,4 +178,23 @@ nav {
         }
     }
 
+}
+
+.flex-carosello {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.card-login {
+    margin-top: 120px;
+    background-color: rgba(168, 172, 170, 0.6);
+    border-radius: 20px;
+
+    .button-login {
+        background-color: #00CDBE;
+        color: white;
+        border-radius: 15px;
+    }
 }
