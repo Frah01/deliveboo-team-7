@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col ">
             <div class="d-flex justify-content-center p-2">
-                <a href="{{route('admin.dishes.index')}}" class="btn btn-primary"><i class="fa-sharp fa-solid fa-arrow-left mx-1"></i><span class="mx-1">Torna ai piatti</span></a>
+                <a href="{{route('admin.dishes.index')}}" class="btn indietro text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left mx-1"></i><span class="mx-1">Torna ai piatti</span></a>
             </div>
         </div>
         <div class="col-12 d-flex justify-content-center">
