@@ -2,13 +2,11 @@
 @section('content')
 <div class="container back-grey">
     <div class="row">
-        <div class="col">
-            <div class="d-flex justify-content-start p-2">
+        <div class="col ">
+            <div class="d-flex justify-content-center p-2">
                 <a href="{{route('admin.dishes.index')}}" class="btn btn-primary"><i class="fa-sharp fa-solid fa-arrow-left mx-1"></i><span class="mx-1">Torna ai piatti</span></a>
             </div>
         </div>
-    </div>
-    <div class="row" >
         <div class="col-12 d-flex justify-content-center">
             <div class="card p-0 shadow" style="width: 36rem;">
                 <img src="{{asset($dish->immagine)}}" class="card-img-top" alt="...">
