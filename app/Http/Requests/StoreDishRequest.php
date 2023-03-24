@@ -24,14 +24,14 @@ class StoreDishRequest extends FormRequest
     public function rules()
     {
         return [
-          'nome'=>['required'],
+          'nome'=>['required','unique:restaurants'],
           'prezzo'=>['required'],
           'ingredienti'=>['required'],
           'tipologia'=>['required'],
           'immagine'=>['nullable','image']
         ];
     }
-    public function message(){
+    public function messages(){
         return[
             'nome.required'=>'nome del piatto obbligatorio ',
             'prezzo.required'=>'prezzo obbligatorio',

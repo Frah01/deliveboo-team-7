@@ -28,7 +28,8 @@ class StoreCategoryRequest extends FormRequest
         ];
     }
 
-    public function messages(){
+    public function messages()
+    {
         
             return[
                 'nome.required' => 'Inserisci una categoria al ristorante!',
