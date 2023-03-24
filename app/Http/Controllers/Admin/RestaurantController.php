@@ -53,6 +53,7 @@ class RestaurantController extends Controller
     public function store(StoreRestaurantRequest $request)
     {
         $form_data = $request->validated();
+        dd($form_data);
 
         $user = Auth::user();
         $slug = Restaurant::generateSlug($request->nome, '-');

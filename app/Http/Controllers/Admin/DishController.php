@@ -80,13 +80,18 @@ class DishController extends Controller
     {
         $user = Auth::user();
         $user_id = $user->id;
-
-        $restaurant = Restaurant::where('user_id', $user_id)->first();
         
-        if($restaurant->id == $dish->resturant_id)
+        if($user->id == 1)
+        {
             return view('admin.dishes.show', compact('dish'));
-        else
-            return redirect()->route('admin.dishes.index')->with('warning', 'Non puoi visualizzare i post di un altro utente');
+        }
+        else{
+            $restaurant = Restaurant::where('user_id', $user_id)->first();
+            if($restaurant->id == $dish->restaurant_id)
+                return view('admin.dishes.show', compact('dish'));
+            else
+                return redirect()->route('admin.dishes.index')->with('warning', 'Non puoi visualizzare i post di un altro utente');
+        }
     }
 
     /**

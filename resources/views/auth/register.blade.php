@@ -9,7 +9,7 @@
                     <div class="card-body text-center text-light my-3">Sei un ristoratore? Registrati alla piattaforma! </div>
     
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('admin.restaurants.store') }}" enctype="multipart/form-data">
                             @csrf
     
                             <div class="mb-4 row">
