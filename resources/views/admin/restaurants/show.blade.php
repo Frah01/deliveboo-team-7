@@ -22,6 +22,13 @@
             <p>{{$restaurant->indirizzo}}</p>
             <strong>numero di telefono</strong>
             <p>{{$restaurant->telefono}}</p>
+            <p><strong>categoria</strong>
+                @forelse($restaurant->categories as $category)
+                <p>{{$category->nome}}</p>
+                @empty
+                <p>nessuna nessuna categoria selezionata</p> 
+                @endforelse
+                </p>
             <strong>email</strong>
             <p>{{$restaurant->email}}</p>
             <strong>partita iva</strong>

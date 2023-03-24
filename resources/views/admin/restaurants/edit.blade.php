@@ -72,6 +72,26 @@
                     <div class="text-danger">{{$message}}</div>
                     @enderror
                 </div>
+                <div class="form-group my-3">
+                    <label class="control-label">
+                        categorie
+                    </label>
+                    @foreach ($categories as $category)
+                    <div class="form-check @error('categories') is-invalid @enderror">
+
+                    @if($errors->any())
+                    <input class="form-check-input" type="checkbox" value="{{$category->id}}" name="categories[]" {{in_array($category->id, old('categories', [])) ? 'checked' : ''}}>
+                    <label class="form-check-label">{{$category->nome}}</label>
+                    @else
+                    <input class="form-check-input" type="checkbox" value="{{$category->id}}" name="categories[]" {{$restaurant->categories->contains($category) ? 'checked' : ''}}>
+                    <label> {{$category->nome}}</label>
+                    
+                    @endif
+                    </div>
+
+                    @endforeach
+                </div>
+                
                 <div class="form-group my-3 mx-5 d-flex justify-content-center" >
                     <button type="submit" class="btn btn-success my-3">
                         Salva

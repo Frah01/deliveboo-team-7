@@ -50,7 +50,12 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"><strong>{{$restaurant->nome}}</strong></h5>
-                                <div><em><strong>Categoria: </strong></em></div>
+                                <div><em><strong>Categoria: </strong></em>
+                                    @forelse($restaurant->categories as $category)
+                                    <p>{{$category->nome}}</p>
+                                    @empty
+                                    <p>nessuna nessuna categoria selezionata</p> 
+                                    @endforelse</div>
                             </div>
                         </div>
                     </div>
