@@ -1,1 +1,7 @@
-@import '~bootstrap/scss/bootstrap'
+@use './restaurants/restaurants.scss';
+
+@import '~bootstrap/scss/bootstrap';
+
+ul {
+    list-style-type: none;
+}
