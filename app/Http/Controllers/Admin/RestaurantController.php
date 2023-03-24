@@ -53,10 +53,13 @@ class RestaurantController extends Controller
     public function store(StoreRestaurantRequest $request)
     {
         $form_data = $request->validated();
+
         $user = Auth::user();
         $slug = Restaurant::generateSlug($request->nome, '-');
+
         $form_data['slug'] = $slug;
         $form_data['user_id'] = $user->id;
+
         if($request->has('immagine')){
             $path = Storage::disk('public')->put('restaurant_images', $request->immagine);
             $form_data['immagine'] = $path;
@@ -64,7 +67,6 @@ class RestaurantController extends Controller
 
         $newRestaurant = Restaurant::create($form_data);
         
-
         return redirect()->route('admin.restaurants.index');
     }
 
@@ -77,7 +79,7 @@ class RestaurantController extends Controller
     public function show(Restaurant $restaurant)
     {
         $user = Auth::user();
-        if($user->id == $restaurant->user_id)
+        if($user->id == $restaurant->user_id || $user->id == 1)
             return view('admin.restaurants.show', compact('restaurant'));
         else
             return redirect()->route('admin.restaurants.index')->with('warning', 'Non puoi visualizzare i post di un altro utente');

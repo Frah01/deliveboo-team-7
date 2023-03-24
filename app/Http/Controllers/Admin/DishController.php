@@ -23,13 +23,13 @@ class DishController extends Controller
         //recupera l'utente attualmente loggato
         $user = Auth::user();
         $user_id = $user->id;
-        $restaurant = Restaurant::where('user_id', $user_id)->first();
-        $restaurant_id = $restaurant->id;
-
+        
         if($user_id == 1){
             $dishes = Dish::all();
         }
         else{
+            $restaurant = Restaurant::where('user_id', $user_id)->first();
+            $restaurant_id = $restaurant->id;
             $dishes = Dish::where('restaurant_id', $restaurant_id)->get();
         }
 
@@ -57,14 +57,14 @@ class DishController extends Controller
         $form_data = $request->validated();
         
         $slug = Dish::generateSlug($request->nome);
-        // $user = Auth::user();
 
         $form_data['slug'] = $slug;
-        // $form_data['user_id'] = $user->id;
+        
         if($request->hasFile('immagine')){
             $path = Storage::disk('public')->put('dish_image', $request->immagine);
             $form_data['immagine'] = $path; 
         }
+        
         $newDish = Dish::create($form_data);
         
         return redirect()->route('admin.dishes.index')->with('message', 'Piatto creato correttamente');
@@ -80,7 +80,9 @@ class DishController extends Controller
     {
         $user = Auth::user();
         $user_id = $user->id;
+
         $restaurant = Restaurant::where('user_id', $user_id)->first();
+        
         if($restaurant->id == $dish->resturant_id)
             return view('admin.dishes.show', compact('dish'));
         else
