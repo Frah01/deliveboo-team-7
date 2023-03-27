@@ -9,7 +9,9 @@
                     <h2>ELENCO RISTORANTI</h2>
                 </div>
                 <div>
+                    @if (Auth::user()->id == 1)
                     <a href="{{ route('admin.restaurants.create') }}" class="btn btn-sm btn-primary">Aggiungi ristorante</a>
+                    @endif
                 </div>
             </div>
             <hr>

@@ -33,6 +33,7 @@
             <div class="form-group ">
                 <label class="control-label">Immagine</label>
                 <input type="file" name="immagine" id="immagine" class="form-control">
+              
                
             </div>
             <div class="form-group ">
@@ -71,6 +72,11 @@
 </div>
 </div>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+
+    {!! JsValidator::formRequest('App\Http\Requests\StoreDishRequest') !!}
 
 @endsection

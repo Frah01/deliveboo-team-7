@@ -24,14 +24,14 @@ class UpdateRestaurantRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => ['required',Rule::unique('restaurants')->ignore($this->restaurant), 'max:100'],
+            'nome' => ['required',Rule::unique('restaurants')->ignore($this->restaurant),'min:3', 'max:100'],
             'slug' => ['required'],
-            'telefono' => ['nullable', 'max:13'],
+            'telefono' => ['nullable','min:10', 'max:13'],
             'immagine' => ['nullable' , 'image'],
-            'email' => ['nullable', 'max:50'],
-            'indirizzo' => ['required', 'max:100'],
+            'email' => ['required','email:@', 'max:50'],
+            'indirizzo' => ['required','min:5', 'max:100'],
             'partita_iva' => ['required', 'max:11'],
-            'categories'=>['exists:categories,id'],
+            'categories'=>['required','exists:categories,id'],
         ];
     }
 
@@ -40,14 +40,20 @@ class UpdateRestaurantRequest extends FormRequest
             'nome.required' => 'Inserisci un nome al ristorante!',
             'nome.unique' => 'Un ristorante con lo stesso nome è già presente nella pagina!',
             'nome.max' => 'Il nome può avere massimo 100 caratteri!',
+            'nome.min' => 'Il nome deve avere almeno 3 caratteri',
             'slug.required' => 'Inserisci uno slug per il progetto!',
             'immagine.image' => 'Inserire un formato di file valido!',
             'telefono.max' => 'Il numero può essere di massimo 13 caratteri!',
+            'telefono.min' => 'Il numero deve avere almeno 10  caratteri!',
             'email.max' => 'La mail può essere di massimo 50 caratteri!',
+            'email.required'=>'mail obbligatoria',
+            'email.email'=>'mail non valida',
             'indirizzo.required' => 'Inserisci un indirizzo al ristorante!',
             'indirizzo.max' => 'L\'indirizzo può avere massimo 100 caratteri!',
+            'indirizzo.max' => 'L\'indirizzo deve avere almeno 3 caratteri!',
             'partita_iva.required' => 'Inserisci una partita_iva al ristorante!',
             'partita_iva.max' => 'La partita_iva può avere massimo 11 caratteri!',
+            'categories.required'=>'la categoria è obbligatoria',
             
             
             

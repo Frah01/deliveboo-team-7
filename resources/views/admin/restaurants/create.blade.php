@@ -80,10 +80,11 @@
                         <label for="nome" class="control-label">Categoria: </label>
                     @foreach ($categories as $category)
                     <div>
-                        <input class="mx-2" type="checkbox" value="{{$category->id}}" name="categories[]">
-                        <label class="form-check-label">{{$category->nome}}</label>  
+                    <input class="mx-2" type="checkbox" value="{{$category->id}}" name="categories[]">
+                    <label class="form-check-label">{{$category->nome}}</label>  
                     </div>
                     @endforeach
+                </div>
                 </div>
                 @error('categoria')
                     <div class="text-danger">{{$message}}</div>
@@ -96,5 +97,11 @@
         </div>
     </div>
 </div>
+   
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+
+    {!! JsValidator::formRequest('App\Http\Requests\StoreRestaurantRequest') !!}
 @endsection

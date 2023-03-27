@@ -87,22 +87,22 @@
                         Categorie:
                     </label>
                     @foreach ($categories as $category)
-                    <div class="form-check @error('categories') is-invalid @enderror">
+                        <div class="form-check @error('categories') is-invalid @enderror"></div>
 
-                    @if($errors->any())
-                    <input class="form-check-input" type="checkbox" value="{{$category->id}}" name="categories[]" {{in_array($category->id, old('categories', [])) ? 'checked' : ''}}>
-                    <label class="form-check-label">{{$category->nome}}</label>
-                    @else
-                    <input class="form-check-input" type="checkbox" value="{{$category->id}}" name="categories[]" {{$restaurant->categories->contains($category) ? 'checked' : ''}}>
-                    <label> {{$category->nome}}</label>
-                    
-                    @endif
-                    </div>
+                            @if($errors->any())
+                            <input class="form-check-input" type="checkbox" value="{{$category->id}}" name="categories[]" {{in_array($category->id, old('categories', [])) ? 'checked' : ''}}>
+                            <label class="form-check-label">{{$category->nome}}</label>
+                            @else
+                            <input class="form-check-input" type="checkbox" value="{{$category->id}}" name="categories[]" {{$restaurant->categories->contains($category) ? 'checked' : ''}}>
+                            <label> {{$category->nome}}</label>
+                            
+                            @endif
+                        
 
                     @endforeach
                 </div>
                 
-                <div class="form-group mb-3" >
+                <div class="form-group mb-3 mt-3" >
                     <button type="submit" class="btn indietro text-white fw-semibold ">
                         Salva
                     </button>
@@ -112,5 +112,10 @@
         </div>
     </div>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+
+{!! JsValidator::formRequest('App\Http\Requests\UpdateRestaurantRequest') !!}
 @endsection
