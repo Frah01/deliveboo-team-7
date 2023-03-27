@@ -1,19 +1,39 @@
-.indietro{
+.indietro {
     background-color: #00CDBE;
-   
+
 }
-.indietro:hover{
-    background-color:#04b3a7 ;
+
+.indietro:hover {
+    background-color: #04b3a7;
 }
-.salva{
+
+.salva {
     background-color: #41e709;
 }
-.col-dish{
+
+.col-dish {
     background-color: white;
 }
-.form-group{
-    padding:0  20px 10px 20px;
+
+.form-group {
+    padding: 0 20px 10px 20px;
 }
-.col-titolo{
+
+.col-titolo {
     background-color: white;
+}
+
+.badge-disponibile {
+    position: absolute;
+    bottom: 65%;
+    left: 7%;
+    color: white;
+    rotate: 340deg;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: rgb(177, 26, 26);
+    width: 85%;
+    margin: 0 auto;
+    padding: 10px;
 }
