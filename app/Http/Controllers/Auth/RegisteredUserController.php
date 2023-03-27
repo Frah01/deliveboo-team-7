@@ -5,18 +5,17 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Restaurant;
+use App\Models\Category;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Http\Requests\StoreRestaurantRequest;
-
-
-
 
 class RegisteredUserController extends Controller
 {
@@ -25,7 +24,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $categories = Category::all();
+        return view('auth.register', compact('categories'));
     }
 
     /**
@@ -77,8 +77,9 @@ class RegisteredUserController extends Controller
 
         $newRestaurant = Restaurant::create($form_data);
 
-        // return redirect()->route('admin.restaurants.index');
-
+        if($request->has('categories')){
+            $newRestaurant->categories()->attach($request->categories);
+        }
 
         return redirect(RouteServiceProvider::HOME);
     }

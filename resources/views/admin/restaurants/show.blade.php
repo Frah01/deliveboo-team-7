@@ -10,7 +10,15 @@
         </div>
         <div class="col-12 d-flex justify-content-center">
             <div class="card p-0 shadow" style="width: 36rem;">
-                <img src="{{asset($restaurant->immagine)}}" class="card-img-top" alt="...">
+                @if ((strpos($restaurant->immagine, "restaurant_image") !== false))
+                        <img class="card-img-top" src="{{asset('storage/'.$restaurant->immagine)}}">
+                    @else
+                        @if ($restaurant->immagine)
+                        <img class="card-img-top" src="{{asset($restaurant->immagine)}}">
+                        @else 
+                        <img class="card-img-top" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
+                        @endif
+                    @endif
                 <div class="card-body">
                   <h5 class="card-title">{{$restaurant->nome}}</h5>
                   <p class="card-text"><span class="fw-semibold">Indirizzo: </span>{{$restaurant->indirizzo}}</p>
@@ -34,7 +42,15 @@
                 @forelse ($restaurant->dishes as $dish)
                 <div class="col-3 d-flex justify-content-center">
                     <div class="card p-0 shadow" style="width: 36rem;">
-                        <img src="{{asset($dish->immagine)}}" class="card-img-top" alt="...">
+                        @if ((strpos($dish->immagine, "dish_image") !== false))
+                            <img class="card-img-top" src="{{asset('storage/'.$dish->immagine)}}">
+                        @else
+                            @if ($dish->immagine)
+                            <img class="card-img-top" src="{{asset($dish->immagine)}}">
+                            @else 
+                            <img class="card-img-top" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
+                            @endif
+                        @endif
                         <div class="card-body">
                           <h5 class="card-title">{{$dish->nome}}</h5>
                           <p class="card-text"><span class="fw-semibold">Prezzo: </span>{{$dish->prezzo}}</p>

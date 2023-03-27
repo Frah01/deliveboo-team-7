@@ -49,10 +49,14 @@
                             </div>
                             <div class="card h-100">
                                 <div class="h-200 position-relative">
-                                    @if ($dish->immagine)
-                                    <img class="card-img-top" src="{{asset($dish->immagine)}}">
-                                    @else 
-                                    <img class="card-img-top" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
+                                    @if ((strpos($dish->immagine, "dish_image") !== false))
+                                        <img class="card-img-top" src="{{asset('storage/'.$dish->immagine)}}">
+                                    @else
+                                        @if ($dish->immagine)
+                                        <img class="card-img-top" src="{{asset($dish->immagine)}}">
+                                        @else 
+                                        <img class="card-img-top" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
+                                        @endif
                                     @endif
                                 </div>
                                 <div class="card-body">

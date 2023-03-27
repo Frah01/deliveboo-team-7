@@ -9,7 +9,7 @@
                     <div class="card-body text-center text-light my-3">Sei un ristoratore? Registrati alla piattaforma! </div>
                   
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
     
                             <div class="mb-4 row">
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="mb-4 row">
+                            <div class="mb-4 row">
                                 <label for="immagine" class="col-md-4 col-form-label text-md-right text-light">Immagine: </label>
     
                                 <div class="col-md-6">
@@ -101,7 +101,22 @@
                                     </span>
                                     @enderror
                                 </div>
-                            </div> --}}
+                            </div>
+
+                            <div class="mb-4 row">
+                                <label for="partita_iva" class="col-md-4 col-form-label text-md-right text-light">Categoria: </label>
+                                
+                                <div class="col-md-6">
+                                    <div class="row d-flex">
+                                        @foreach ($categories as $category)
+                                        <div class="col-4 d-flex">
+                                            <input class="mx-2" type="checkbox" value="{{$category->id}}" name="categories[]">
+                                            <label class="form-check-label">{{$category->nome}}</label>  
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
     
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
