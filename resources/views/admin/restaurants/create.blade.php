@@ -3,8 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-12">
-            <h1 class="text-center"> Aggiungi nuovo ristorante alla lista: </h1>
+        <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-between">
+            <div class="my-4 mx-3">
+                <h3>AGGIUNGI NUOVO RISTORANTE</h3>
+            </div>
+            <div class="mx-3">
+                <a href="{{ route('admin.restaurants.index')}}" class="indietro btn text-white fw-semibold my-4"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna ai ristoranti</a>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -72,19 +77,19 @@
                     @enderror
                 </div>
                 <div class="mb-3 form-group">
-                    <div>
-                        <label for="nome" class="control-label">categoria: </label>
-                    </div>
-                    
+                        <label for="nome" class="control-label">Categoria: </label>
                     @foreach ($categories as $category)
-                    <input class="mx-2" type="checkbox" value="{{$category->id}}" name="categories[]">
-                    <label class="form-check-label">{{$category->nome}}</label>  
+                    <div>
+                        <input class="mx-2" type="checkbox" value="{{$category->id}}" name="categories[]">
+                        <label class="form-check-label">{{$category->nome}}</label>  
+                    </div>
                     @endforeach
                 </div>
                 @error('categoria')
                     <div class="text-danger">{{$message}}</div>
                 @enderror
-                <button type="submit" class="btn btn-success my-3">
+
+                <button type="submit" class="btn indietro text-white fw-semibold ms-3 mb-5">
                     Salva
                 </button>
             </form>
