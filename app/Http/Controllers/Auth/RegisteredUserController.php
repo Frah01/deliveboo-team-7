@@ -15,6 +15,9 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Http\Requests\StoreRestaurantRequest;
 
+
+
+
 class RegisteredUserController extends Controller
 {
     /**
