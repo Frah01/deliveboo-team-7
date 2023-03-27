@@ -24,8 +24,8 @@
             <div class="col-md-12">
                 <div class="row">
                     @foreach ($dishes as $dish)
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 my-3">
-                        <div class="mx-2 h-100 card-restaurant">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 my-3 ">
+                        <div class="mx-2 h-100 shadow rounded card-restaurant">
                             <div class="show-icon card">
                                 <ul class="mb-0 ps-0 d-flex">
                                     <li class="p-1">
@@ -49,10 +49,14 @@
                             </div>
                             <div class="card h-100">
                                 <div class="h-200 position-relative">
-                                    @if ($dish->immagine)
-                                    <img class="card-img-top" src="{{asset($dish->immagine)}}">
-                                    @else 
-                                    <img class="card-img-top" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
+                                    @if ((strpos($dish->immagine, "dish_image") !== false))
+                                        <img class="card-img-top" src="{{asset('storage/'.$dish->immagine)}}">
+                                    @else
+                                        @if ($dish->immagine)
+                                        <img class="card-img-top" src="{{asset($dish->immagine)}}">
+                                        @else 
+                                        <img class="card-img-top" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
+                                        @endif
                                     @endif
                                 </div>
                                 <div class="card-body">
@@ -67,8 +71,6 @@
                                     @endif
                                 </div>
                             </div>
-                          
-
                         </div>
                     </div>
                     @endforeach
