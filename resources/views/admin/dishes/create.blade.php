@@ -52,11 +52,11 @@
             <div class="form-group my-3 mx-5">
                 <label class="control-label"><strong>tipologia</strong> </label>
                 <select name="tipologia" id="tipologia">
-                    <option value="1">antipasto</option>
-                    <option value="2">primo</option>
-                    <option value="3">secondo</option>
-                    <option value="4">dolce</option>
-                    <option value="5">bibita</option>
+                    <option value="antipasto">Antipasto</option>
+                    <option value="primo">Primo</option>
+                    <option value="secondo">Secondo</option>
+                    <option value="dolce">Dolce</option>
+                    <option value="bibita">Bibita</option>
                 </select>
                 @error('tipologia')
                     <div class="text-danger">{{$message}}</div>

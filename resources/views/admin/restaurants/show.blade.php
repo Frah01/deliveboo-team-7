@@ -3,8 +3,9 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <div class="my-3 d-flex justify-content-center">
+            <div class="my-3 d-flex justify-content-between">
                 <a href="{{route('admin.restaurants.index')}}" class="btn indietro text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left mx-1"></i><span class="mx-1">Torna ai ristoranti</span></a>
+                <a href="{{route('admin.dishes.create')}}" class="btn indietro text-white fw-semibold"><i class="fa-solid fa-utensils mx-1"></i><span class="mx-1">Aggiungi piatto</span></a>
             </div>
         </div>
         <div class="col-12 d-flex justify-content-center">
@@ -24,6 +25,30 @@
                 </div>
             </div>
         </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12 mt-3">
+            <h4>Piatti che appartengono a questa ristorante:</h4>
+            <div class="row">
+                @forelse ($restaurant->dishes as $dish)
+                <div class="col-3 d-flex justify-content-center">
+                    <div class="card p-0 shadow" style="width: 36rem;">
+                        <img src="{{asset($dish->immagine)}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{$dish->nome}}</h5>
+                          <p class="card-text"><span class="fw-semibold">Prezzo: </span>{{$dish->prezzo}}</p>
+                          <p class="card-text"><span class="fw-semibold">Ingredienti: </span>{{$dish->ingredienti}}</p>
+                          <p class="card-text"><span class="fw-semibold">Tipologia: </span>{{$dish->tipologia}}</p>
+                        </div>
+                    </div>
+                </div>
+                @empty
+                    <h5>Non ci sono piatti per questo ristorante</h5>
+                @endforelse
+            </div>
+        </div>
+    </div>
 </div>
 
 
