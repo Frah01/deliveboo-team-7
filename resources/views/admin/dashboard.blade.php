@@ -186,7 +186,7 @@
                     <h2 class="titolo-card">I tuoi Ordini </h2>
                     <p>Tieni traccia di tutti i tuoi ordini e visualizza il loro stato!</p>
                        <a href="/">
-                        <button class="bottone-cards">Visualizza iordini</button>
+                        <button class="bottone-cards">Visualizza ordini</button>
                        </a>
                    </div>
                </div>
