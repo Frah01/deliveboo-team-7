@@ -47,34 +47,27 @@
                                     </li>
                                 </ul>
                             </div>
-                             <div class="card h-100">
-                            <div class="h-200 position-relative">
-                                @if ($dish->immagine)
-                                <img class="card-img-top" src="{{asset($dish->immagine)}}">
-                                @else 
-                                <img class="card-img-top" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
-                                @endif
-                          </div>   
-                         </div>
                             <div class="card h-100">
-                                <div class="h-200">
-                                    <img class="card-img-top" src="{{asset($dish->immagine)}}" alt="{{$dish->nome}}">
+                                <div class="h-200 position-relative">
+                                    @if ($dish->immagine)
+                                    <img class="card-img-top" src="{{asset($dish->immagine)}}">
+                                    @else 
+                                    <img class="card-img-top" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
+                                    @endif
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title"><strong>{{$dish->nome}}</strong></h5>
                                     <div><em><strong>Tipologia: </strong></em>{{$dish->tipologia}}</div>
+                                    <div class="card-title d-inline-block"><strong>Disponibile: </strong></div>
+                                    @if ($dish->disponibile == true)
+                                       <span>  Sì  </span>
+                                    @else
+                                        <div class="badge-disponibile">Prodotto Terminato!</div>
+                                       <span > No </span>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="card-title d-inline-block"><strong>Disponibile: </strong></div>
-                                @if ($dish->disponibile == true)
-                                   <span>  Sì  </span>
-                                @else
-                                    <div class="badge-disponibile">Prodotto Terminato!</div>
-                                   <span > No </span>
-                                @endif
-                                </span>
-                            </div>
+                          
 
                         </div>
                     </div>
