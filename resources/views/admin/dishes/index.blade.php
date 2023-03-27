@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12 mt-5">
+            <div class="col-md-12 mt-5">
                 <div class="d-flex justify-content-between">
                     <div>
                         <h2>ELENCO PIATTI</h2>
@@ -15,47 +15,51 @@
                 <hr>
             </div>
             @if (session('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
+                <div class="col-md-12">
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
                 </div>
             @endif
-            <div class="col-12 d-flex flex-wrap">
-                @foreach ($dishes as $dish)
-                <div class="col-3 my-3 h-300">
-                    <div class="mx-2 h-100 card-restaurant">
-                        <div class="show-icon card">
-                            <ul class="mb-0 ps-0 d-flex">
-                                <li class="p-1">
-                                    <a href="{{ route('admin.dishes.show', $dish->slug)}}" title="Visualizza" class="btn btn-square bg-info">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </li>
-                                <li class="p-1">
-                                    <a href="{{ route('admin.dishes.edit', $dish->slug)}}" title="Modifica" class="btn btn-square btn-warning">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                </li>
-                                <li class="p-1">
-                                    <form class="d-inline-block" method="POST" action="{{route('admin.dishes.destroy', ['dish' => $dish['slug']])}}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-square btn-danger confirm-delete-button" data-title="{{$dish->nome}}"><i class="fas fa-trash" ></i></button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card h-100">
-                            <div class="h-200">
-                                <img class="card-img-top" src="{{asset($dish->immagine)}}">
+            <div class="col-md-12">
+                <div class="row">
+                    @foreach ($dishes as $dish)
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 my-3">
+                        <div class="mx-2 h-100 card-restaurant">
+                            <div class="show-icon card">
+                                <ul class="mb-0 ps-0 d-flex">
+                                    <li class="p-1">
+                                        <a href="{{ route('admin.dishes.show', $dish->slug)}}" title="Visualizza" class="btn btn-square bg-info">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </li>
+                                    <li class="p-1">
+                                        <a href="{{ route('admin.dishes.edit', $dish->slug)}}" title="Modifica" class="btn btn-square btn-warning">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </li>
+                                    <li class="p-1">
+                                        <form class="d-inline-block" method="POST" action="{{route('admin.dishes.destroy', ['dish' => $dish['slug']])}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-square btn-danger confirm-delete-button" data-title="{{$dish->nome}}" title="Elimina"><i class="fas fa-trash" ></i></button>
+                                        </form>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>{{$dish->nome}}</strong></h5>
-                                <div><em><strong>Tipologia: </strong></em>{{$dish->tipologia}}</div>
+                            <div class="card h-100">
+                                <div class="h-200">
+                                    <img class="card-img-top" src="{{asset($dish->immagine)}}" alt="{{$dish->nome}}">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{{$dish->nome}}</strong></h5>
+                                    <div><em><strong>Tipologia: </strong></em>{{$dish->tipologia}}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
