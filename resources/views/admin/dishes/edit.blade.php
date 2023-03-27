@@ -2,15 +2,17 @@
 @section('content')
 
 <div class="container dish">
-    <div class="row ">
-        <div class="col-12  d-flex justify-content-between ">
-            <div class="my-5 col-titolo p-3 mx-5">
-                <h5 class=>modifica piatto: {{$dish->nome}}</h5>
-            </div>
-            <div>
-                <a href="{{ route('admin.dishes.index')}}" class="btn btn-primary indietro mx-5  my-5"> torna ai piatti</a>
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-end" >
+            <div class="mx-5 p-3">
+                <a href="{{ route('admin.dishes.index')}}" class="btn text-white fw-semibold indietro mt-3"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna ai piatti</a>
             </div>
         </div>
+        <div class="col-12 col-md-8 offset-md-2">
+            <h2 class="text-center mt-3 mx-5"> Modifica {{$dish->nome}} </h2>
+        </div>
+    </div>
+    <div class="row ">
         <div class="mx-5">
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -22,51 +24,55 @@
             </div>
         @endif
         </div>
-        <div class="col-12 ">
+        <div class="col-12 col-md-8 offset-md-2 ">
             <form action="{{route('admin.dishes.update', $dish->slug)}}" method="POST" enctype="multipart/form-data" >
             @csrf
             @method('PUT')
-            <div class="form-group col-dish 3 mx-5 pt-3">
-                <label class="control-label"><strong>Nome piatto</strong> </label>
+            <div class="form-group col-dish mx-5 pt-3">
+                <label class="control-label">Nome piatto</label>
                 <input type="text" name="nome" id="nome" class="form-control" placeholder="inserisci nome piatto" value="{{old('nome') ?? $dish->nome}}">
                 @error('nome')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>
-            <div class="form-group col-dish  mx-5">
-                <label class="control-label"><strong>immagine in uso</strong> </label>
-                <div>
-                    <img src="{{$dish->immagine}}" alt="{{$dish->immagine}}" class="w-50">
+            <div class="form-group col-dish my-3 mx-5">
+                <label class="control-label">Immagine in uso</label>
+                <div class="mt-2 d-flex ">
+                    <img class="shadow w-25" src="{{$dish->immagine}}" alt="{{$dish->immagine}}" class="w-50">
                 </div>
-                <label class="control-label "><strong>nuova immagine</strong> </label>
+            </div>
+            <div class="form-group col-dish  my-3 mx-5">
+                <label class="control-label ">Nuova immagine</label>
                 <input type="file" name="immagine" id="immagine" class="form-control" @error('immagine')is-invalid @enderror>
             </div>
-            <div class="form-group col-dish  mx-5">
-                <label class="control-label"><strong>prezzo</strong> </label>
+            <div class="form-group col-dish  my-3 mx-5">
+                <label class="control-label">Prezzo</label>
                 <input type="text" name="prezzo" id="prezzo" class="form-control" placeholder="inserisci prezzo" value="{{old('prezzo') ?? $dish->prezzo}}">
                 @error('prezzo')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>
-            <div class="form-group col-dish  mx-5">
-                <label class="control-label"><strong>ingredienti</strong> </label>
+            <div class="form-group col-dish  my-3 mx-5">
+                <label class="control-label">Ingredienti</label>
                 <input type="text" name="ingredienti" class="form-control" placeholder="inserisci ingredienti" value="{{old('ingredienti') ?? $dish->ingredienti}}">
                 @error('ingredienti')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>
             <div class="form-group col-dish mx-5 pb-4">
-                <label class="control-label"><strong>tipologia</strong> </label>
-                <select name="tipologia" id="tipologia">
-                    <option value="1">antipasto</option>
-                    <option value="2">primo</option>
-                    <option value="3">secondo</option>
-                    <option value="4">dolce</option>
-                    <option value="5">bibita</option>
-                </select>
+                <label class="control-label">Tipologia</label>
+                <select class="form-select" aria-label="Seleziona la tipologia di piatto" name="tipologia" id="tipologia">
+                    <option value="" selected disabled>Seleziona la tipologia di piatto</option>
+                    <option value="1">Antipasto</option>
+                    <option value="2">Primo</option>
+                    <option value="3">Secondo</option>
+                    <option value="4">Dolce</option>
+                    <option value="5">Bibita</option>
+                  </select>
+                  
             </div>
-            <div class="form-group my-3 mx-5 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success salva"><strong>salva</strong> </button>
+            <div class="form-group my-3 mx-5">
+                <button type="submit" class="btn text-white fw-semibold indietro">Salva</button>
             </div>
             </form>
         </div>
