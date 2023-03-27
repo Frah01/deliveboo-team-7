@@ -47,7 +47,11 @@
                 </div>
                 <div class="card h-100">
                     <div>
-                        <img class="card-img-top" src="{{asset($restaurant->immagine)}}" alt="{{$restaurant->nome}}">
+                        @if ($restaurant->immagine)
+                        <img class="card-img-top" src="{{asset($restaurant->immagine)}}">
+                        @else 
+                        <img class="card-img-top" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
+                        @endif
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"><strong>{{$restaurant->nome}}</strong></h5>
