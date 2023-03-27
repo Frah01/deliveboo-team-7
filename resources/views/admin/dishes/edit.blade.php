@@ -63,13 +63,12 @@
                 <label class="control-label">Tipologia</label>
                 <select class="form-select" aria-label="Seleziona la tipologia di piatto" name="tipologia" id="tipologia">
                     <option value="" selected disabled>Seleziona la tipologia di piatto</option>
-                    <option value="1">Antipasto</option>
-                    <option value="2">Primo</option>
-                    <option value="3">Secondo</option>
-                    <option value="4">Dolce</option>
-                    <option value="5">Bibita</option>
+                    <option value="antipasto">Antipasto</option>
+                    <option value="primo">Primo</option>
+                    <option value="secondo">Secondo</option>
+                    <option value="dolce">Dolce</option>
+                    <option value="bibita">Bibita</option>
                   </select>
-                  
             </div>
             <div class="form-group my-3 mx-5">
                 <button type="submit" class="btn text-white fw-semibold indietro">Salva</button>
