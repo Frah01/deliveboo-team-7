@@ -62,8 +62,8 @@
             <div class="form-group col-dish mx-5 pb-4">
                 <label class="control-label">Tipologia</label>
                 <select class="form-select" aria-label="Seleziona la tipologia di piatto" name="tipologia" id="tipologia">
-                    <option value="" selected disabled>Seleziona la tipologia di piatto</option>
-                    <option value="antipasto">Antipasto</option>
+                    <option  selected disabled>Seleziona la tipologia di piatto</option>
+                    <option value="antipasto" @if (old('tipologia') == 'antipasto') selected @endif>Antipasto</option>
                     <option value="primo">Primo</option>
                     <option value="secondo">Secondo</option>
                     <option value="dolce">Dolce</option>
@@ -78,6 +78,11 @@
     </div>
 </div>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+
+    {!! JsValidator::formRequest('App\Http\Requests\UpdateDishRequest') !!}
 
 @endsection

@@ -24,8 +24,8 @@ class StoreDishRequest extends FormRequest
     public function rules()
     {
         return [
-          'nome'=>['required','unique:restaurants'],
-          'prezzo'=>['required'],
+          'nome'=>['required','unique:restaurants', 'min:3'],
+          'prezzo'=>['required', 'min:0','gt:0'],
           'ingredienti'=>['required'],
           'tipologia'=>['required'],
           'immagine'=>['nullable','image']
@@ -34,7 +34,9 @@ class StoreDishRequest extends FormRequest
     public function messages(){
         return[
             'nome.required'=>'nome del piatto obbligatorio ',
-            'prezzo.required'=>'prezzo obbligatorio',
+            'nome.min'=>'il nome del piatto deve avere almeno 3 caratteri ',
+            'prezzo.required'=>'prezzo obbligatorio', 
+            'prezzo.gt'=>'prezzo non può essere negativo o nullo',
             'ingredienti.required'=>'ingredienti obbligatori',
             'tipologia.required'=>'tipologia piatto obbligatoria'
         ];
