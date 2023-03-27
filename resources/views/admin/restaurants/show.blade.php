@@ -2,6 +2,7 @@
 @section('content')
 
 <div class="container">
+
     <div class="row">
         <div class="col-12 mt-2">
             <div class="my-3 d-flex justify-content-between">

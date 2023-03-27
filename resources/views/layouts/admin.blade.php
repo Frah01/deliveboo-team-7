@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Fontawesome 6 cdn -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -49,7 +49,7 @@
         </header>
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block navbar-dark sidebar collapse sidebar-deliveboo">
+                {{-- <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block navbar-dark sidebar collapse sidebar-deliveboo">
                     <div class="position-sticky pt-3"> 
                         <ul class="nav flex-column lista-link">
                             <li class="nav-item">
@@ -74,8 +74,8 @@
                             </li>
                         </ul>
                     </div>
-                </nav>
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                </nav> --}}
+                <main class="p-0">
                     @yield('content')
                 </main>
             </div>
