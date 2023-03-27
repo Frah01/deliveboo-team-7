@@ -24,7 +24,7 @@
             <div class="col-md-12">
                 <div class="row">
                     @foreach ($dishes as $dish)
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 my-3">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 my-3 ">
                         <div class="mx-2 h-100 shadow rounded card-restaurant">
                             <div class="show-icon card">
                                 <ul class="mb-0 ps-0 d-flex">
@@ -67,8 +67,6 @@
                                     @endif
                                 </div>
                             </div>
-                          
-
                         </div>
                     </div>
                     @endforeach
