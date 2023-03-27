@@ -205,6 +205,11 @@
     position: fixed;
     enable-background: new 0 0 100vw 90vh;
 
+    .animated-svg {
+        width: 100vw;
+        height: 100%;
+    }
+
     #home {
         clip-path: url(#cache);
 

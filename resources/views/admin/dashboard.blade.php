@@ -21,14 +21,14 @@
             </div>
         </div>
     </div> --}}
-    <div class="bg-animated position-relative">
+    <div class="bg-animated">
 
         <svg version="1.1" id="home-anim" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        viewBox="0 0 1820 1080" xml:space="preserve">
+        class="animated-svg" xml:space="preserve">
     
        <g id="home">
        <defs>
-           <rect id="masque" y="0.4" width="1820" height="1080"/>
+           <rect id="masque" y="0.4" width="100%" height="100%"/>
        </defs>
        <clipPath id="cache">
            <use xlink:href="#masque"  style="overflow:visible;"/>
