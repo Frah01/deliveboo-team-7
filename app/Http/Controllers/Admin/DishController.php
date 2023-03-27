@@ -63,7 +63,7 @@ class DishController extends Controller
         if($request->hasFile('immagine')){
             $path = Storage::disk('public')->put('dish_image', $request->immagine);
             $form_data['immagine'] = $path; 
-        };
+        }
         
         $newDish = Dish::create($form_data);
         
