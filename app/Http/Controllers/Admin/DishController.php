@@ -31,6 +31,7 @@ class DishController extends Controller
             $restaurant = Restaurant::where('user_id', $user_id)->first();
             $restaurant_id = $restaurant->id;
             $dishes = Dish::where('restaurant_id', $restaurant_id)->get();
+            // dd($restaurant);
         }
 
         return view('admin.dishes.index', compact('dishes'));
@@ -55,10 +56,17 @@ class DishController extends Controller
     public function store(StoreDishRequest $request)
     {
         $form_data = $request->validated();
+
+        //recupera l'utente attualmente loggato
+        $user = Auth::user();
+
+        $restaurant = Restaurant::where('user_id', $user->id)->first();
+        $restaurant_id = $restaurant->id;
         
         $slug = Dish::generateSlug($request->nome);
 
         $form_data['slug'] = $slug;
+        $form_data['restaurant_id'] = $restaurant_id;
         
         if($request->hasFile('immagine')){
             $path = Storage::disk('public')->put('dish_image', $request->immagine);
