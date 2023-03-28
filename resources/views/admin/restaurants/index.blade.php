@@ -11,7 +11,7 @@
                 <div>
                     @if (Auth::user()->id == 1)
                     <a href="{{ route('admin.dashboard')}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna alla dashboard</a>
-                    <a href="{{ route('admin.restaurants.create') }}" class="indietro btn text-white fw-semibold">Aggiungi ristorante</a>
+                    <a href="{{ route('admin.restaurants.create') }}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-house-user me-2"></i>Aggiungi ristorante</a>
                     @else
                     <a href="{{ route('admin.dashboard')}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna alla dashboard</a>
                     @endif
@@ -65,9 +65,9 @@
                         <div>
                             <em><strong>Categoria: </strong></em>
                             @forelse($restaurant->categories as $category)
-                            <span>{{$category->nome}}</span>
+                            <span class="badge bg-primary">{{$category->nome}}</span>
                             @empty
-                            <p>nessuna categoria selezionata</p>
+                            <span>nessuna categoria selezionata</span>
                             @endforelse
                         </div>
                     </div>

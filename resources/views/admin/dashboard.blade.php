@@ -172,7 +172,7 @@
            <div class="row">
               <div class="informazioni-ristorante">
                     <div>
-                        <h1>Benvenuto nella homepage del tuo locale, {{Auth::user()->name}}!</h1>
+                        <h1>Benvenuto nella homepage del tuo locale, <span class="primary-color">{{Auth::user()->name}}!</span></h1>
                         <p>Da qui potrai monitorare gli ordini del tuo ristorante e modificare il tuo menù. Da oggi è ancora più facile vendere su Deliveboo! Attira i clienti con nuovi piatti e nuove offerte!</p>
                         <a href="{{route('admin.restaurants.show', $slug) }}">
                             <button class="bottone-cards">Dettagli Ristorante</button>
@@ -184,7 +184,7 @@
                        <img src="https://cdn-icons-png.flaticon.com/128/1980/1980832.png" alt="">
                        <h2 class="titolo-card">Il tuo Menù </h2>
                        <p>Da qui potrai accedere al menù del tuo ristorante ed aggiungere tutti i piatti che vorrai!</p>
-                       <a href="{{route('admin.dishes.index') }}">
+                       <a href="{{route('admin.restaurants.show', $slug) }}">
                         <button class="bottone-cards">Visualizza menù</button>
                        </a>
                    </div>

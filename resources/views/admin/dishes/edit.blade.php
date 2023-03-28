@@ -3,13 +3,17 @@
 
 <div class="container dish">
     <div class="row">
-        <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-end" >
-            <div class="mx-5 p-3">
-                <a href="{{ route('admin.dishes.index')}}" class="btn text-white fw-semibold indietro mt-3"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna ai piatti</a>
+        <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-between mt-5" >
+            <div>
+                <h2>Modifica il tuo piatto</h2>
             </div>
-        </div>
-        <div class="col-12 col-md-8 offset-md-2">
-            <h2 class="text-center mt-3 mx-5"> Modifica {{$dish->nome}} </h2>
+            <div>
+                @if (Auth::user()->id == 1)
+                <a href="{{ route('admin.dishes.index')}}" class="btn text-white fw-semibold indietro"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna ai piatti</a>
+                @else
+                <a href="{{ route('admin.restaurants.show', $slug)}}" class="btn text-white fw-semibold indietro"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna al ristorante</a>
+                @endif
+            </div>
         </div>
     </div>
     <div class="row ">
@@ -58,6 +62,14 @@
                 @error('ingredienti')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
+            </div>
+            <div class="form-group col-dish mx-5 pb-4">
+                <label class="control-label">Disponibile</label>
+                <select class="form-select" aria-label="Seleziona la disponibilità del piatto" name="disponibile" id="disponibile">
+                    <option  selected disabled>Seleziona la disponibilità del piatto</option>
+                    <option value="1" {{1 == old('tipologia', $dish->disponibile) ? 'selected' : ''}}>Si</option>
+                    <option value="0" {{0 == old('tipologia', $dish->disponibile) ? 'selected' : ''}}>No</option>
+                  </select>
             </div>
             <div class="form-group col-dish mx-5 pb-4">
                 <label class="control-label">Tipologia</label>
