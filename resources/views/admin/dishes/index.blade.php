@@ -9,7 +9,8 @@
                         <h2>ELENCO PIATTI</h2>
                     </div>
                     <div>
-                        <a href="{{ route('admin.dishes.create') }}" class="btn btn-sm btn-primary">Aggiungi piatto</a>
+                        <a href="{{ route('admin.dashboard')}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna alla dashboard</a>
+                        <a href="{{ route('admin.dishes.create') }}" class="indietro btn text-white fw-semibold">Aggiungi piatto</a>
                     </div>
                 </div>
                 <hr>
@@ -60,7 +61,7 @@
                                     @endif
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title"><strong>{{$dish->nome}}</strong></h5>
+                                    <h5 class="card-title text-uppercase"><strong>{{$dish->nome}}</strong></h5>
                                     <div><em><strong>Tipologia: </strong></em>{{$dish->tipologia}}</div>
                                     <div class="card-title d-inline-block"><strong>Disponibile: </strong></div>
                                     @if ($dish->disponibile == true)

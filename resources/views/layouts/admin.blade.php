@@ -47,7 +47,7 @@
                 </div>
             </div>
         </header>
-        <div class="container-fluid vh-100">
+        <div class="container-fluid ">
             <div class="row h-100">
                 {{-- <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block navbar-dark sidebar collapse sidebar-deliveboo">
                     <div class="position-sticky pt-3"> 

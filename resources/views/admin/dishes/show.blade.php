@@ -1,14 +1,22 @@
 @extends('layouts.admin')
 @section('content')
+
 <div class="container back-grey">
     <div class="row">
-        <div class="col ">
-            <div class="d-flex justify-content-center p-2 my-3">
-                <a href="{{route('admin.dishes.index')}}" class="btn indietro text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left mx-1"></i><span class="mx-1">Torna ai piatti</span></a>
-            </div>
+        <div class="col-12">
+            <div class="offset-md-3 col-md-6 d-flex justify-content-between p-2 my-3">
+                @if (Auth::user()->id == 1)
+                    <a href="{{ route('admin.dishes.index')}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna ai piatti</a>
+                    <a href="{{ route('admin.restaurants.show', $slug)}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna al ristorante</a>
+                </div>
+                @else
+                <div class="offset-md-3 col-md-6 d-flex justify-content-center">
+                    <a href="{{ route('admin.restaurants.show', $slug)}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna al ristorante</a>
+                </div>
+                @endif
         </div>
-        <div class="col-12 d-flex justify-content-center">
-            <div class="card p-0 shadow" style="width: 36rem;">
+        <div class="col-md-12 d-flex justify-content-center">
+            <div class="card p-0 shadow" style="max-width: 36rem;">
                 @if ((strpos($dish->immagine, "dish_image") !== false))
                     <img class="card-img-top" src="{{asset('storage/'.$dish->immagine)}}">
                 @else

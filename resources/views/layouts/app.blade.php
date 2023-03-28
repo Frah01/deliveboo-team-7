@@ -59,7 +59,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right bg-drop" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item text-light login-button" href="{{ route('admin.dashboard') }}">{{__('Dashboard')}}</a>
-                                <a class="dropdown-item text-light login-button" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                {{-- <a class="dropdown-item text-light login-button" href="{{ url('profile') }}">{{__('Profile')}}</a> --}}
                                 <a class="dropdown-item text-light login-button" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
