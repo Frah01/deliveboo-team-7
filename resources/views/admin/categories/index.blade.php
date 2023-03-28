@@ -2,24 +2,25 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-12 mt-5">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h2>ELENCO DELLE CATEGORIE</h2>
+            <div class="row mt-5">
+                <div class="offset-1 col-10 d-flex justify-content-around">
+                    <div class="my-4">
+                        <h3>ELENCO DELLE CATEGORIE</h3>
                     </div>
-                    <div>
-                        <a href="{{ route('admin.categories.create') }}" class="btn btn-sm btn-primary">Aggiungi</a>
+                    <div class=" d-flex">
+                        <a href="{{ route('admin.dashboard')}}" class="indietro btn text-white fw-semibold my-4"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna alla dashboard</a>
+                        <a href="{{ route('admin.categories.create') }}" class="indietro btn text-white fw-semibold my-4 ms-2">Aggiungi</a>
                     </div>
+                    <hr>
                 </div>
-                <hr>
             </div>
             @if (session('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
             @endif
-            <div class="col-12">
+            <div class="row">
+            <div class="offset-1 col-10">
                 <table class="table table-striped">
                     <thead>
                         <th>Id</th>
@@ -62,6 +63,6 @@
                 </table>
             </div>
         </div>
-    </div>
+   
 @include('partials.modal_delete')
 @endsection

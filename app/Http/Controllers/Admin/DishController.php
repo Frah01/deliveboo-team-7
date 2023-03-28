@@ -23,11 +23,10 @@ class DishController extends Controller
         //recupera l'utente attualmente loggato
         $user = Auth::user();
         $user_id = $user->id;
-        
-        if($user_id == 1){
+
+        if ($user_id == 1) {
             $dishes = Dish::all();
-        }
-        else{
+        } else {
             $restaurant = Restaurant::where('user_id', $user_id)->first();
             $restaurant_id = $restaurant->id;
             $dishes = Dish::where('restaurant_id', $restaurant_id)->get();
@@ -44,7 +43,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view( 'admin.dishes.create');
+        return view('admin.dishes.create');
     }
 
     /**
@@ -62,19 +61,19 @@ class DishController extends Controller
 
         $restaurant = Restaurant::where('user_id', $user->id)->first();
         $restaurant_id = $restaurant->id;
-        
+
         $slug = Dish::generateSlug($request->nome);
 
         $form_data['slug'] = $slug;
         $form_data['restaurant_id'] = $restaurant_id;
-        
-        if($request->hasFile('immagine')){
+
+        if ($request->hasFile('immagine')) {
             $path = Storage::disk('public')->put('dish_image', $request->immagine);
-            $form_data['immagine'] = $path; 
+            $form_data['immagine'] = $path;
         };
-        
+
         $newDish = Dish::create($form_data);
-        
+
         return redirect()->route('admin.dishes.index')->with('message', 'Piatto creato correttamente');
     }
 
@@ -88,15 +87,16 @@ class DishController extends Controller
     {
         $user = Auth::user();
         $user_id = $user->id;
-        
-        if($user->id == 1)
-        {
-            return view('admin.dishes.show', compact('dish'));
-        }
-        else{
+
+        $restaurant = Restaurant::where('user_id', $user_id)->first();
+        $slug = Restaurant::generateSlug($restaurant->nome, '-');
+
+        if ($user->id == 1) {
+            return view('admin.dishes.show', compact('dish', 'slug'));
+        } else {
             $restaurant = Restaurant::where('user_id', $user_id)->first();
-            if($restaurant->id == $dish->restaurant_id)
-                return view('admin.dishes.show', compact('dish'));
+            if ($restaurant->id == $dish->restaurant_id)
+                return view('admin.dishes.show', compact('dish', 'slug'));
             else
                 return redirect()->route('admin.dishes.index')->with('warning', 'Non puoi visualizzare i post di un altro utente');
         }
@@ -121,27 +121,25 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateDishRequest $request, Dish $dish)
-    {
-        {
+    { {
             $form_data = $request->validated();
-           
-            $slug = Dish::generateSlug($request->nome);
-          
-            $form_data['slug'] = $slug; 
-           if($request->hasFile('immagine')){
-            if($dish->immagine){
-                Storage::delete($dish->immagine);
-            }
-            $path = Storage::disk('public')->put('dish_image', $request->immagine);
 
-            $form_data['immagine'] = $path;
-              
+            $slug = Dish::generateSlug($request->nome);
+
+            $form_data['slug'] = $slug;
+            if ($request->hasFile('immagine')) {
+                if ($dish->immagine) {
+                    Storage::delete($dish->immagine);
+                }
+                $path = Storage::disk('public')->put('dish_image', $request->immagine);
+
+                $form_data['immagine'] = $path;
             }
-           
-           
+
+
             $dish->update($form_data);
             return redirect()->route('admin.dishes.index')->with('message', 'Piatto modificato correttamente');
-          }
+        }
     }
 
     /**
