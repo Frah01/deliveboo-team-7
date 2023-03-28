@@ -13,8 +13,15 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $user_id = $user->id;
-        $restaurant = Restaurant::where('user_id', $user_id)->first();
-        $slug = Restaurant::generateSlug($restaurant->nome, '-');
-        return view('admin.dashboard', compact('slug'));
+
+        if($user_id == 1){
+            $restaurants = Restaurant::all();
+            return view('admin.dashboard');
+        }
+        else{
+            $restaurant = Restaurant::where('user_id', $user_id)->first();
+            $slug = Restaurant::generateSlug($restaurant->nome, '-');
+            return view('admin.dashboard', compact('slug'));
+        }
     }
 }
