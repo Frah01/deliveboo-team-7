@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Models\Dish;
+use App\Models\Restaurant;
 
 class UpdateDishRequest extends FormRequest
 {
@@ -24,7 +27,7 @@ class UpdateDishRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => ['required','unique:restaurant','min:3'],
+            'nome' => ['required',Rule::unique(Dish::class)->ignore($this),'min:3'],
             'prezzo' => ['required', 'min:0','gt:0'],
             'ingredienti' => ['required'],
             'tipologia' => ['required', 'min:5'],
