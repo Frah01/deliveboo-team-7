@@ -28,7 +28,7 @@
     <div id="app">
 
         <header class="navbar navbar-dark sticky-top flex-md-nowrap p-2 shadow deliveboo-navbar">
-            <a class="navbar-brand col-md-3 col-lg-2 my-2 container-logo" href="/">
+            <a class="navbar-brand col-md-3 col-lg-2 my-2 container-logo" href="http://localhost:5174/">
                 <img src="https://smallprintpizza.com.au/wp-content/uploads/deliveroo-logo.png" alt="logo deliveboo">
             </a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">

@@ -26,7 +26,7 @@
 
         <nav class="navbar navbar-expand-md navbar-light shadow-sm deliveboo-navbar">
             <div class="container">
-                <a class="navbar-brand col-md-3 col-lg-2 my-2 container-logo" href="/">
+                <a class="navbar-brand col-md-3 col-lg-2 my-2 container-logo" href="http://localhost:5174/">
                     <img src="https://smallprintpizza.com.au/wp-content/uploads/deliveroo-logo.png" alt="logo deliveboo">
                 </a>
 
