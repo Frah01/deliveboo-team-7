@@ -61,7 +61,7 @@
                                     @endif
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title"><strong>{{$dish->nome}}</strong></h5>
+                                    <h5 class="card-title text-uppercase"><strong>{{$dish->nome}}</strong></h5>
                                     <div><em><strong>Tipologia: </strong></em>{{$dish->tipologia}}</div>
                                     <div class="card-title d-inline-block"><strong>Disponibile: </strong></div>
                                     @if ($dish->disponibile == true)
