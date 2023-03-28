@@ -63,11 +63,11 @@
                 <label class="control-label">Tipologia</label>
                 <select class="form-select" aria-label="Seleziona la tipologia di piatto" name="tipologia" id="tipologia">
                     <option  selected disabled>Seleziona la tipologia di piatto</option>
-                    <option value="antipasto" @if (old('tipologia') == 'antipasto') selected @endif>Antipasto</option>
-                    <option value="primo">Primo</option>
-                    <option value="secondo">Secondo</option>
-                    <option value="dolce">Dolce</option>
-                    <option value="bibita">Bibita</option>
+                    <option value="antipasto" {{"antipasto" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Antipasto</option>
+                    <option value="primo" {{"primo" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Primo</option>
+                    <option value="secondo" {{"secondo" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Secondo</option>
+                    <option value="dolce" {{"dolce" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Dolce</option>
+                    <option value="bibita" {{"bibita" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Bibita</option>
                   </select>
             </div>
             <div class="form-group my-3 mx-5">
