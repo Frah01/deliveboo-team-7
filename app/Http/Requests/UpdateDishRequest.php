@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Models\Dish;
+use App\Models\Restaurant;
 
 class UpdateDishRequest extends FormRequest
 {
@@ -24,7 +27,7 @@ class UpdateDishRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => ['required','unique:restaurant','min:3'],
+            'nome' => ['required','min:3'],
             'prezzo' => ['required', 'min:0','gt:0'],
             'ingredienti' => ['required'],
             'tipologia' => ['required', 'min:5'],
@@ -36,7 +39,7 @@ class UpdateDishRequest extends FormRequest
         return [
             'nome.required' => 'nome del piatto obbligatorio ',
             'nome.min'=>'il nome del piatto deve avere almeno 3 caratteri ',
-            'nome.unique'=>'piatto già presente',
+            
             'prezzo.required' => 'prezzo obbligatorio',
             'prezzo.required'=>'prezzo obbligatorio', 
             'prezzo.gt'=>'prezzo non può essere negativo o nullo',

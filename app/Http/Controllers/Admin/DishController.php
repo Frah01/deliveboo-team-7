@@ -123,7 +123,6 @@ class DishController extends Controller
     public function update(UpdateDishRequest $request, Dish $dish)
     { {
             $form_data = $request->validated();
-
             $slug = Dish::generateSlug($request->nome);
 
             $form_data['slug'] = $slug;
@@ -138,6 +137,7 @@ class DishController extends Controller
 
 
             $dish->update($form_data);
+            
             return redirect()->route('admin.dishes.index')->with('message', 'Piatto modificato correttamente');
         }
     }
