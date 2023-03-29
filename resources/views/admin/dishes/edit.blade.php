@@ -9,7 +9,12 @@
             </div>
             <div>
                 @if (Auth::user()->id == 1)
-                <a href="{{ route('admin.dishes.index')}}" class="btn text-white fw-semibold indietro"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna ai piatti</a>
+                    @if($dish->restaurant_id)
+                    <a href="{{ route('admin.restaurants.show', $restaurant_slug)}}" class="btn text-white fw-semibold indietro"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna al ristorante</a>
+                    <a href="{{ route('admin.dishes.index')}}" class="btn text-white fw-semibold indietro"><i class="fa-sharp fa-solid fa-arrow-right me-2"></i>Vai a tutti i piatti</a>
+                    @else
+                    <a href="{{ route('admin.dishes.index')}}" class="btn text-white fw-semibold indietro"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna ai piatti</a>
+                    @endif
                 @else
                 <a href="{{ route('admin.restaurants.show', $slug)}}" class="btn text-white fw-semibold indietro"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna al ristorante</a>
                 @endif

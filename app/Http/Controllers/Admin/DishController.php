@@ -43,7 +43,12 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view('admin.dishes.create');
+        $user = Auth::user();
+
+        $restaurant = Restaurant::where('user_id', $user->id)->first();
+        $restaurant_slug = Restaurant::generateSlug($restaurant->nome, '-');
+        
+        return view('admin.dishes.create', compact('restaurant_slug'));
     }
 
     /**
@@ -74,7 +79,11 @@ class DishController extends Controller
 
         $newDish = Dish::create($form_data);
 
-        return redirect()->route('admin.dishes.index')->with('message', 'Piatto creato correttamente');
+        // return redirect()->route('admin.dishes.index')->with('message', 'Piatto creato correttamente');
+
+        $restaurant = Restaurant::where('user_id', $user->id)->first();
+        $restaurant_slug = Restaurant::generateSlug($restaurant->nome, '-');
+        return redirect()->route('admin.restaurants.show', $restaurant_slug)->with('message', 'Piatto modificato correttamente');
     }
 
     /**
@@ -113,7 +122,14 @@ class DishController extends Controller
         $user = Auth::user();
 
         if ($user->id == 1) {
-            return view('admin.dishes.edit', compact('dish'));
+            $restaurant = Restaurant::where('id', $dish->restaurant_id)->first();
+            if($restaurant){
+                $restaurant_slug = Restaurant::generateSlug($restaurant->nome, '-');
+                return view('admin.dishes.edit', compact('dish', 'restaurant_slug'));
+            }
+            else{
+                return view('admin.dishes.edit', compact('dish'));
+            }
         } else {
             $restaurant = Restaurant::where('user_id', $user->id)->first();
             $slug = Restaurant::generateSlug($restaurant->nome, '-');
@@ -150,8 +166,6 @@ class DishController extends Controller
         
         $user = Auth::user();
 
-        
-
         if($user->id == 1)
         {
             return redirect()->route('admin.dishes.index')->with('message', 'Piatto modificato correttamente');
@@ -175,6 +189,16 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         $dish->delete();
+
+        $user = Auth::user();
+
+        if($user->id != 1)
+        {
+            $restaurant = Restaurant::where('user_id', $user->id)->first();
+            $restaurant_slug = Restaurant::generateSlug($restaurant->nome, '-');
+            return redirect()->route('admin.restaurants.show', $restaurant_slug)->with('message', 'Piatto eliminato correttamente');
+        }
+
         return redirect()->route('admin.dishes.index', compact('dish'))->with('message', 'Piatto eliminato correttamente');
     }
 }

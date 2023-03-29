@@ -8,7 +8,7 @@
                 <h3>INSERISCI NUOVO PIATTO</h3>
             </div>
             <div class="mx-3">
-                <a href="{{ route('admin.dishes.index')}}" class="indietro btn text-white fw-semibold my-4"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna ai piatti</a>
+                <a href="{{ route('admin.restaurants.show', $restaurant_slug)}}" class="indietro btn text-white fw-semibold my-4"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna al ristorante</a>
             </div>
         </div>
         <div class="col-12 col-md-8 offset-md-2">

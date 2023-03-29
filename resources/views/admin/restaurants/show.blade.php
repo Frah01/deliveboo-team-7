@@ -35,7 +35,7 @@
                   <p class="card-text"><span class="fw-semibold">Categoria:  @forelse($restaurant->categories as $category)
                 <span class="badge bg-primary">{{$category->nome}}</span>
                 @empty
-                <span>nessuna nessuna categoria selezionata</span> 
+                <span>Nessuna categoria selezionata</span> 
                 @endforelse</p>
                 </div>
             </div>
@@ -94,6 +94,5 @@
         </div>
     </div>
 </div>
-
-
+@include('partials.modal_delete')
 @endsection
