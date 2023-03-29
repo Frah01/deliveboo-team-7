@@ -9,6 +9,15 @@ use App\Models\Restaurant;
 
 class RestaurantController extends Controller
 {
+    public function index(){
+        $restaurants = Restaurant::with('categories')->paginate(6);
+      
+        return response()->json([
+            'success'=>true,
+            'results'=>$restaurants
+        ]);
+    }
+   
     public function show($slug){
         $restaurants = Restaurant::all()->where('slug', $slug)->first();
         $dishes = Dish::all()->where('restaurant_id', $restaurants->id);
