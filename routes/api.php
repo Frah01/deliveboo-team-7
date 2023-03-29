@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\GuestLeadController as GuestLeadController;
+use App\Http\Controllers\Api\RestaurantController as RestaurantController;
 
 
 /*
@@ -19,5 +20,6 @@ use App\Http\Controllers\Api\GuestLeadController as GuestLeadController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::get('/restaurants', [RestaurantController::class, 'index']);
 Route::post('/contatti', [GuestLeadController::class, 'store']);
+
