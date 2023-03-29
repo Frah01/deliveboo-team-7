@@ -30,6 +30,7 @@ class UpdateDishRequest extends FormRequest
             'nome' => ['required','min:3'],
             'prezzo' => ['required', 'min:0','gt:0'],
             'ingredienti' => ['required'],
+            'disponibile' => ['required'],
             'tipologia' => ['required', 'min:5'],
             'immagine' => ['nullable', 'image']
         ];
@@ -39,7 +40,6 @@ class UpdateDishRequest extends FormRequest
         return [
             'nome.required' => 'nome del piatto obbligatorio ',
             'nome.min'=>'il nome del piatto deve avere almeno 3 caratteri ',
-            
             'prezzo.required' => 'prezzo obbligatorio',
             'prezzo.required'=>'prezzo obbligatorio', 
             'prezzo.gt'=>'prezzo non può essere negativo o nullo',

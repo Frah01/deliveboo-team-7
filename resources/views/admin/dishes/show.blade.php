@@ -3,19 +3,18 @@
 
 <div class="container back-grey">
     <div class="row">
-        <div class="col-12">
-            <div class="offset-md-3 col-md-6 d-flex justify-content-between p-2 my-3">
-                @if (Auth::user()->id == 1)
+        <div class="col-12 mt-5">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h2>DETTAGLIO</h2>
+                </div>
+                <div>
                     <a href="{{ route('admin.dishes.index')}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna ai piatti</a>
-                    <a href="{{ route('admin.restaurants.show', $slug)}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna al ristorante</a>
                 </div>
-                @else
-                <div class="offset-md-3 col-md-6 d-flex justify-content-center">
-                    <a href="{{ route('admin.restaurants.show', $slug)}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna al ristorante</a>
-                </div>
-                @endif
+            </div>
+            <hr>
         </div>
-        <div class="col-md-12 d-flex justify-content-center">
+        <div class="col-md-12 d-flex justify-content-center my-3">
             <div class="card p-0 shadow" style="max-width: 36rem;">
                 @if ((strpos($dish->immagine, "dish_image") !== false))
                     <img class="card-img-top" src="{{asset('storage/'.$dish->immagine)}}">
