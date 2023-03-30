@@ -10,7 +10,7 @@
                     </div>
                     <div>
                         <a href="{{ route('admin.dashboard')}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna alla dashboard</a>
-                        <a href="{{ route('admin.dishes.create') }}" class="indietro btn text-white fw-semibold">Aggiungi piatto</a>
+                        <a href="{{ route('admin.dishes.create') }}" class="indietro btn text-white fw-semibold"><i class="fa-solid fa-utensils me-2"></i>Aggiungi piatto</a>
                     </div>
                 </div>
                 <hr>

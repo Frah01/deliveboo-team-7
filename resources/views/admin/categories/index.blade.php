@@ -3,13 +3,13 @@
 @section('content')
     <div class="container">
             <div class="row mt-5">
-                <div class="offset-1 col-10 d-flex justify-content-around">
+                <div class="offset-1 col-10 d-flex justify-content-around align-items-center">
                     <div class="my-4">
                         <h3>ELENCO DELLE CATEGORIE</h3>
                     </div>
-                    <div class=" d-flex">
+                    <div class="d-flex align-items-center">
                         <a href="{{ route('admin.dashboard')}}" class="indietro btn text-white fw-semibold my-4"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna alla dashboard</a>
-                        <a href="{{ route('admin.categories.create') }}" class="indietro btn text-white fw-semibold my-4 ms-2">Aggiungi</a>
+                        <a href="{{ route('admin.categories.create') }}" class="indietro btn text-white fw-semibold my-4 ms-2"><i class="fa-solid fa-circle-plus me-2"></i>Aggiungi categoria</a>
                     </div>
                     <hr>
                 </div>
