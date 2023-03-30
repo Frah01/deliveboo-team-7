@@ -35,4 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/payment', 'App\Http\Controllers\Payment\StripeController@checkout')->name('checkout');
+Route::post('/session', 'App\Http\Controllers\Payment\StripeController@session')->name('session');
+Route::get('/success', 'App\Http\Controllers\Payment\StripeController@success')->name('success');
+
+
 require __DIR__ . '/auth.php';
