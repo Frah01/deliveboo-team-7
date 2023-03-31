@@ -10,8 +10,16 @@ use App\Models\Restaurant;
 class RestaurantController extends Controller
 {
     public function index(){
-        $restaurants = Restaurant::with('categories')->paginate(6);
-      
+        // $restaurants = Restaurant::with('categories')->paginate(6);
+        if($_GET['nome'] === ''){
+            $restaurants = Restaurant::with('categories')->get();
+        }
+        else{
+            $restaurants = Restaurant::with('categories')
+                ->where("nome", "like", "%" . $_GET['nome'] . "%")
+                ->get();
+        }
+
         return response()->json([
             'success'=>true,
             'results'=>$restaurants
