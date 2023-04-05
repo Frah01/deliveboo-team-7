@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\GuestLeadController as GuestLeadController;
 use App\Http\Controllers\Api\RestaurantController as RestaurantController;
 use App\Http\Controllers\Api\CategoryController as CategoryController;
+use App\Http\Controllers\Api\OrderController as OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,5 @@ Route::get('/restaurants', [RestaurantController::class, 'index']);
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/restaurants/{slug}', [RestaurantController::class, 'show']);
 Route::post('/contatti', [GuestLeadController::class, 'store']);
+Route::post('/order', [OrderController::class, 'store']);
 

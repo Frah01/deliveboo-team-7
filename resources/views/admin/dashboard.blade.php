@@ -194,7 +194,7 @@
                     <img src="https://cdn-icons-png.flaticon.com/128/3081/3081144.png" alt="">
                     <h2 class="titolo-card">I tuoi Ordini </h2>
                     <p>Tieni traccia di tutti i tuoi ordini e visualizza il loro stato!</p>
-                       <a href="/">
+                        <a href="{{route('admin.orders.index') }}">
                         <button class="bottone-cards">Visualizza ordini</button>
                        </a>
                    </div>
