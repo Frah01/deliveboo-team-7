@@ -15,22 +15,41 @@ class OrderController extends Controller
     {
         $form_data = $request->all();
 
-        $validator = Order::make($form_data, [
-            'nome' => 'required',
-            'cognome' => 'required',
-            'indirizzo' => 'required',
-        ]);
-        
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors' => $validator->errors(),
+        if($form_data['pagamento'] == false){
+
+            $validator = Validator::make($form_data, [
+                'nome' => 'required',
+                'cognome' => 'required',
+                'indirizzo' => 'required',
             ]);
+    
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'errors' => $validator->errors(),
+                ]);
+            }
+            else{
+                return response()->json([
+                    'success'=>true,
+                    'results'=>$form_data
+                ]);
+            }
+        }
+        else{
+
+            $new_order = new Order();
+            $new_order['slug'] = $form_data['nome'];
+            $new_order['nome'] = $form_data['nome'];
+            $new_order['cognome'] = $form_data['cognome'];
+            $new_order['indirizzo'] = $form_data['indirizzo'];
+            $new_order['telefono'] = $form_data['telefono'];
+            $new_order['data'] = '2023/04/05';
+            $new_order['prezzo_totale'] = $form_data['prezzo_totale'];
+            $new_order->save();
         }
 
-        $new_order = new Order();
-        $new_order->fill($form_data);
-        $new_order->save();
+
 
         // Mail::to('info@deliveboo.com')->send(new GuestContact($newContact));
         // return response()->json([

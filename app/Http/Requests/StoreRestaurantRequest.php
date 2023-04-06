@@ -31,7 +31,7 @@ class StoreRestaurantRequest extends FormRequest
             'immagine' => ['nullable' , 'image'],
             'email' => ['required','email:@', 'max:50'],
             'indirizzo' => ['required', 'max:100'],
-            'partita_iva' => ['required', 'max:11'],
+            'partita_iva' => ['required', 'size:11'],
             'categories'=>['exists:categories,id'],
             'password'=>['required', 'min:8','confirmed'],
         ];
@@ -55,7 +55,7 @@ class StoreRestaurantRequest extends FormRequest
             'indirizzo.required' => 'Inserisci un indirizzo al ristorante!',
             'indirizzo.max' => 'L\'indirizzo può avere massimo 100 caratteri!',
             'partita_iva.required' => 'Inserisci una partita iva al ristorante!',
-            'partita_iva.max' => 'La partita_iva può avere massimo 11 caratteri!',
+            'partita_iva.size' => 'La partita_iva deve avere 11 caratteri!',
             
             
             
