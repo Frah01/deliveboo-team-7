@@ -320,4 +320,43 @@
             }
         }
     }
+
+    .container-login {
+        top: 12%;
+        left: 15%;
+        position: absolute;
+
+        .card-login {
+            background-color: rgba(0, 205, 190, 0.85);
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 20px;
+
+            .button-login {
+                background-color: rgb(68, 0, 99);
+                color: white;
+                border-radius: 15px;
+            }
+        }
+    }
+
+    .container-register {
+        top: 0%;
+        left: 17%;
+        position: absolute;
+
+        .card-login {
+            background-color: rgba(0, 205, 190, 0.85);
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 20px;
+
+            .button-login {
+                background-color: rgb(68, 0, 99);
+                color: white;
+                border-radius: 15px;
+            }
+        }
+    }
+
 }

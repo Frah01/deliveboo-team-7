@@ -37,7 +37,7 @@
             <input class="form-control form-control-dark search-bar" type="text" placeholder="Search">
             <div class="navbar nav">
                 <div class="nav-item text-nowrap ms-2 ">
-                    <a class="nav-link text-light login-button " href="{{ route('logout') }}" onclick="event.preventDefault();
+                    <a class="nav-link text-light login-button " href="http://localhost:5174/" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
