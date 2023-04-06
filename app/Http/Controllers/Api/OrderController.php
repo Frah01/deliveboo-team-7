@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Mail\GuestContact;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -36,7 +37,8 @@ class OrderController extends Controller
                 ]);
             }
         }
-        else{
+
+        if($form_data['loading']){
 
             $new_order = new Order();
             $new_order['slug'] = $form_data['nome'];
@@ -44,7 +46,8 @@ class OrderController extends Controller
             $new_order['cognome'] = $form_data['cognome'];
             $new_order['indirizzo'] = $form_data['indirizzo'];
             $new_order['telefono'] = $form_data['telefono'];
-            $new_order['data'] = '2023/04/05';
+            $new_order['restaurant_id'] = $form_data['ristorante'];
+            $new_order['data'] = Carbon::now()->format('Y-m-d');
             $new_order['prezzo_totale'] = $form_data['prezzo_totale'];
             $new_order->save();
         }
