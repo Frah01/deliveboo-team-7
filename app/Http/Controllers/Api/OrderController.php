@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
-use App\Mail\GuestContact;
+use App\Mail\GuestOrder;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
@@ -16,29 +16,28 @@ class OrderController extends Controller
     {
         $form_data = $request->all();
 
-        if($form_data['pagamento'] == false){
+        if ($form_data['pagamento'] == false) {
 
             $validator = Validator::make($form_data, [
                 'nome' => 'required',
                 'cognome' => 'required',
                 'indirizzo' => 'required',
             ]);
-    
+
             if ($validator->fails()) {
                 return response()->json([
                     'success' => false,
                     'errors' => $validator->errors(),
                 ]);
-            }
-            else{
+            } else {
                 return response()->json([
-                    'success'=>true,
-                    'results'=>$form_data
+                    'success' => true,
+                    'results' => $form_data
                 ]);
             }
         }
 
-        if($form_data['loading']){
+        if ($form_data['loading']) {
 
             $new_order = new Order();
             $new_order['slug'] = $form_data['nome'];
@@ -46,6 +45,8 @@ class OrderController extends Controller
             $new_order['cognome'] = $form_data['cognome'];
             $new_order['indirizzo'] = $form_data['indirizzo'];
             $new_order['telefono'] = $form_data['telefono'];
+            $new_order['note'] = $form_data['note'];
+            $new_order['email'] = $form_data['email'];
             $new_order['restaurant_id'] = $form_data['ristorante'];
             $new_order['data'] = Carbon::now()->format('Y-m-d');
             $new_order['prezzo_totale'] = $form_data['prezzo_totale'];
@@ -54,9 +55,9 @@ class OrderController extends Controller
 
 
 
-        // Mail::to('info@deliveboo.com')->send(new GuestContact($newContact));
-        // return response()->json([
-        //     'success' => true,
-        // ]);
+        Mail::to('info@deliveboo.com')->send(new GuestOrder($new_order));
+        return response()->json([
+            'success' => true,
+        ]);
     }
 }
