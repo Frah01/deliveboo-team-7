@@ -9,37 +9,39 @@ use App\Models\Restaurant;
 
 class RestaurantController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         // $restaurants = Restaurant::with('categories')->paginate(6);
-        if($_GET['nome'] === ''){
+        if ($_GET['nome'] === '') {
             $restaurants = Restaurant::with('categories')->get();
-        }
-        else{
+        } else {
             $restaurants = Restaurant::with('categories')
                 ->where("nome", "like", "%" . $_GET['nome'] . "%")
                 ->get();
         }
 
         return response()->json([
-            'success'=>true,
-            'results'=>$restaurants
+            'success' => true,
+            'results' => $restaurants
         ]);
     }
-   
-    public function show($slug){
+
+    public function show($slug)
+    {
         $restaurants = Restaurant::all()->where('slug', $slug)->first();
         $dishes = Dish::all()->where('restaurant_id', $restaurants->id);
         // $projects = Project::with('type', 'technologies')->paginate(4);
-        if($dishes){
+        if ($dishes) {
             return response()->json([
                 'success' => true,
                 'results' => $dishes,
+                'restaurant' => $restaurants
             ]);
-        }
-        else{
+        } else {
             return response()->json([
                 'success' => false,
-                'error' => 'Nessun piatto trovato'
+                'error' => 'Nessun piatto trovato',
+
             ]);
         }
     }
