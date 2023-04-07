@@ -113,7 +113,7 @@
     </svg>
     <div class="container pt-4  container-login z-3">
         <div class="row justify-content-center pt-5">
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-9 col-sm-12 col-login ">
                 <div class="card card-login">
                     <div class="card-body text-center text-light my-2">Login</div>
     

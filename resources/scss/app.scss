@@ -15,10 +15,24 @@ ul {
 }
 
 .prova-errore {
-    color: white;
-    background-color: red;
+    color: red;
+    
 }
-
+.col-login{
+    padding-bottom: 3rem;
+}
 .primary-color {
     color: #00CDBE
+}
+@media screen and (max-width: 992px) {
+    .col-login{
+        margin-right: 20%;
+    }
+   
+}
+
+@media screen and (max-width: 766px) {
+    .col-login{
+        margin-right: 30%;
+    }
 }
