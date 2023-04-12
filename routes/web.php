@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\DishController as DishController;
 use App\Http\Controllers\Admin\OrderController as OrderController;
 use App\Http\Controllers\Admin\RestaurantController as RestaurantController;
+use App\Http\Controllers\Admin\ChartController as ChartController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +26,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/chart', [ChartController::class, 'index'])->name('chart');
     Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
     Route::resource('dishes', DishController::class)->parameters(['dishes' => 'dish:slug']);
     Route::resource('categories', CategoryController::class)->parameters(['categories' => 'category:slug']);
