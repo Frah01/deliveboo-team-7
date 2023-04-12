@@ -8,24 +8,27 @@
     </div>
 </div>
 <script>
-    const ctx = document.getElementById('myChart');
-   const myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'],
+    var labels =  {{ Js::from($labels) }};
+    var users =  {{ Js::from($data) }};
+    const data = {
+        labels: labels,
         datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3, 2, 4, 6, 7, 7, 10],
-          borderWidth: 1
+            label: 'Ordini',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: users,
         }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
+    };
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {}
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
   </script>
 @endsection 
