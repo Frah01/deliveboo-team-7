@@ -47,7 +47,15 @@
             <div class="form-group col-dish my-3 mx-5">
                 <label class="control-label">Immagine in uso</label>
                 <div class="mt-2 d-flex ">
-                    <img class="shadow w-25" src="{{$dish->immagine}}" alt="{{$dish->immagine}}" class="w-50">
+                    @if ((strpos($dish->immagine, "dish_image") !== false))
+                        <img class="shadow w-25" src="{{asset('storage/'.$dish->immagine)}}">
+                    @else
+                        @if ($dish->immagine)
+                        <img class="shadow w-25" src="{{asset($dish->immagine)}}">
+                        @else 
+                        <img class="shadow w-25" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
+                        @endif
+                    @endif
                 </div>
             </div>
             <div class="form-group col-dish  my-3 mx-5">
@@ -83,6 +91,7 @@
                     <option value="antipasto" {{"antipasto" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Antipasto</option>
                     <option value="primo" {{"primo" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Primo</option>
                     <option value="secondo" {{"secondo" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Secondo</option>
+                    <option value="pizza" {{"pizza" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Pizza</option>
                     <option value="dolce" {{"dolce" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Dolce</option>
                     <option value="bibita" {{"bibita" == old('tipologia', $dish->tipologia) ? 'selected' : ''}}>Bibita</option>
                   </select>

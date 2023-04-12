@@ -42,6 +42,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'indirizzo' => ['required', 'string', 'max:100'],
             'partita_iva' => ['required', 'string', 'max:100'],
+            'telefono' => ['required', 'string', 'max:10'],
             // 'immagine' => ['required', 'string']
         ]);
 
@@ -64,6 +65,7 @@ class RegisteredUserController extends Controller
         $form_data['email'] = $request->email;
         $form_data['indirizzo'] = $request->indirizzo;
         $form_data['partita_iva'] = $request->partita_iva;
+        $form_data['telefono'] = $request->telefono;
         $form_data['user_id'] = $user->id;
 
         $slug = Restaurant::generateSlug($request->nome, '-');

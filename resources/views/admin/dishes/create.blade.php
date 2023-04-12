@@ -57,6 +57,7 @@
                     <option value="antipasto">Antipasto</option>
                     <option value="primo">Primo</option>
                     <option value="secondo">Secondo</option>
+                    <option value="pizza">Pizza</option>
                     <option value="dolce">Dolce</option>
                     <option value="bibita">Bibita</option>
                   </select>

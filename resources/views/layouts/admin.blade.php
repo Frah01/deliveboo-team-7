@@ -34,12 +34,12 @@
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <input class="form-control form-control-dark search-bar" type="text" placeholder="Search">
+            {{-- <input class="form-control form-control-dark search-bar" type="text" placeholder="Search"> --}}
             <div class="navbar nav">
                 <div class="nav-item text-nowrap ms-2 ">
                     <a class="nav-link text-light login-button " href="http://localhost:5174/" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                        {{ Auth::user()->name }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf

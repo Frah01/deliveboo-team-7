@@ -26,13 +26,12 @@ class StoreRestaurantRequest extends FormRequest
     {
         return [
             'nome' => ['required', 'unique:restaurants', 'min:3','max:100'],
-            'slug' => ['required'],
-            'telefono' => ['nullable','min:10', 'max:13'],
+            'telefono' => ['required','size:10'],
             'immagine' => ['nullable' , 'image'],
             'email' => ['required','email:@', 'max:50'],
             'indirizzo' => ['required', 'max:100'],
             'partita_iva' => ['required', 'size:11'],
-            'categories'=>['exists:categories,id'],
+            'categories'=>['required', 'exists:categories,id'],
             'password'=>['required', 'min:8','confirmed'],
         ];
     }
@@ -43,22 +42,20 @@ class StoreRestaurantRequest extends FormRequest
             'nome.unique' => 'Un ristorante con lo stesso nome è già presente nella pagina!',
             'nome.max' => 'Il nome può avere massimo 100 caratteri!',
             'nome.min' => 'Il nome deve essere almeno di 3 caratteri ',
-            'email.required'=>'mail obbligatoria',
-            'email.email'=>'mail non valida',
-            'password.required'=>'inserisci una password',
+            'email.required'=>'Inserisci una email!',
+            'email.email'=>'Email non valida!',
+            'password.required'=>'Inserisci una password',
             'password.min'=>'la password deve avere almeno 8 caratteri',
             'password.confirmed'=>'password non coincidono',
-            'slug.required' => 'Inserisci uno slug per il progetto!',
             'immagine.image' => 'Inserire un formato di file valido!',
-            'telefono.max' => 'Il numero può essere di massimo 13 caratteri!',
+            'telefono.required'=>'Inserisci un numero di telefono!',
+            'telefono.size' => 'Il numero deve avere 10 caratteri!',
             'email.max' => 'La mail può essere di massimo 50 caratteri!',
             'indirizzo.required' => 'Inserisci un indirizzo al ristorante!',
             'indirizzo.max' => 'L\'indirizzo può avere massimo 100 caratteri!',
             'partita_iva.required' => 'Inserisci una partita iva al ristorante!',
             'partita_iva.size' => 'La partita_iva deve avere 11 caratteri!',
-            
-            
-            
+            'categories.required' => 'Seleziona almeno una categoria!',
         ];
     }
 }

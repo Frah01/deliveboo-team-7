@@ -34,13 +34,6 @@
                     <div class="text-danger">{{$message}}</div>
                 @enderror
                 <div class="mb-3 form-group ">
-                    <label for="slug" class="control-label">Slug: </label>
-                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Inserisci lo slug del ristorante" value="{{old('slug') ?? $restaurant->slug}}">
-                </div>
-                @error('slug')
-                <div class="text-danger">{{$message}}</div>
-                @enderror
-                <div class="mb-3 form-group ">
                     <label for="indirizzo" class="control-label">Indirizzo: </label>
                     <input type="text" class="form-control" id="indirizzo" name="indirizzo" placeholder="Inserisci l'indirizzo" value="{{old('indirizzo') ?? $restaurant->indirizzo}}">
                 </div>
@@ -71,7 +64,15 @@
                 <div class="mb-3 form-group ">
                     <label class="control-label">Immagine in uso:</label>
                     <div class="mt-2 d-flex">
-                        <img class="shadow" src="{{$restaurant->immagine}}" alt="{{$restaurant->immagine}}" class="w-50">
+                        @if ((strpos($restaurant->immagine, "restaurant_image") !== false))
+                        <img class="shadow w-25" src="{{asset('storage/'.$restaurant->immagine)}}">
+                    @else
+                        @if ($restaurant->immagine)
+                        <img class="shadow w-25" src="{{asset($restaurant->immagine)}}">
+                        @else 
+                        <img class="shadow w-25" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" alt="immagine-non-disponibile">
+                        @endif
+                    @endif
                     </div>
                 </div>
                 <div class="mb-3 form-group ">

@@ -25,6 +25,7 @@
             @endif
             <form action="{{route('admin.restaurants.store')}}" method="POST" class="mt-5" enctype="multipart/form-data">
                 @csrf
+                {{-- nome --}}
                 <div class="mb-3 form-group">
                     <label for="nome" class="control-label">Nome: </label>
                     <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il nome del ristorante">
@@ -32,13 +33,7 @@
                 @error('nome')
                     <div class="text-danger">{{$message}}</div>
                 @enderror
-                <div class="mb-3 form-group">
-                    <label for="slug" class="control-label">Slug: </label>
-                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Inserisci lo slug del ristorante">
-                </div>
-                @error('slug')
-                <div class="text-danger">{{$message}}</div>
-                @enderror
+                {{-- indirizzo --}}
                 <div class="mb-3 form-group">
                     <label for="indirizzo" class="control-label">Indirizzo: </label>
                     <input type="text" class="form-control" id="indirizzo" name="indirizzo" placeholder="Inserisci l'indirizzo">
@@ -46,6 +41,7 @@
                 @error('indirizzo')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
+                {{-- email --}}
                 <div class="mb-3 form-group">
                     <label for="email" class="control-label">Email: </label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Inserisci email">
@@ -53,6 +49,7 @@
                 @error('email')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
+                {{-- partita iva --}}
                 <div class="mb-3 form-group">
                     <label for="partita_iva" class="control-label">Partita iva: </label>
                     <input type="text" class="form-control" id="partita_iva" name="partita_iva" placeholder="Inserisci la partita iva">
@@ -60,14 +57,15 @@
                 @error('partita_iva')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
+                {{-- telefono --}}
                 <div class="mb-3 form-group">
                     <label for="telefono" class="control-label">Telefono: </label>
-                    <input type="phone" class="form-control" id="telefono" name="telefono" placeholder="Inserisci un numero di telefono">
+                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Inserisci un numero di telefono">
                 </div>
                 @error('telefono')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
-                
+                {{-- immagine --}}
                 <div class="form-group my-3">
                     <label class="control-label">Immagine: </label>
                     <input type="file" name="immagine" id="immagine" class="form-control
@@ -76,15 +74,15 @@
                     <div class="text-danger">{{$message}}</div>
                     @enderror
                 </div>
+                {{-- categorie --}}
                 <div class="mb-3 form-group">
-                        <label for="nome" class="control-label">Categoria: </label>
+                    <label for="nome" class="control-label">Categoria: </label>
                     @foreach ($categories as $category)
                     <div>
-                    <input class="mx-2" type="checkbox" value="{{$category->id}}" name="categories[]">
-                    <label class="form-check-label">{{$category->nome}}</label>  
+                        <input class="mx-2" type="checkbox" value="{{$category->id}}" name="categories[]">
+                        <label class="form-check-label">{{$category->nome}}</label>  
                     </div>
                     @endforeach
-                </div>
                 </div>
                 @error('categoria')
                     <div class="text-danger">{{$message}}</div>

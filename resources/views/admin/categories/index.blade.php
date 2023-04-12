@@ -35,8 +35,8 @@
                                 <td>{{ $category->nome}}</td>
                                 <td>{{ $category->slug}}</td>
                                 <td>
-                                    <a href="{{ route('admin.categories.show', $category->slug)}}" title="Visualizza" class="btn btn-sm btn-square btn-primary">
-                                        <i class="fas fa-eye text-black"></i>
+                                    {{-- <a href="{{ route('admin.categories.show', $category->slug)}}" title="Visualizza" class="btn btn-sm btn-square btn-primary">
+                                        <i class="fas fa-eye text-black"></i> --}}
                                     </a>
                                     <a href="{{ route('admin.categories.edit', $category->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
                                         <i class="fas fa-edit"></i>

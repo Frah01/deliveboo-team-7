@@ -164,7 +164,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right text-light">{{ __('Confirm Password:') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right text-light">{{ __('Confirma Password:') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -191,6 +191,20 @@
                                 <input id="partita_iva" type="text" class="form-control @error('partita_iva') is-invalid @enderror" name="partita_iva" value="{{ old('partita_iva') }}" required autocomplete="partita_iva" autofocus>
 
                                 @error('partita_iva')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="telefono" class="col-md-4 col-form-label text-md-right text-light">Telefono: </label>
+
+                            <div class="col-md-6">
+                                <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required autocomplete="telefono" autofocus>
+
+                                @error('telefono')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

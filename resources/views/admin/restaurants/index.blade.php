@@ -11,7 +11,7 @@
                 <div>
                     @if (Auth::user()->id == 1)
                     <a href="{{ route('admin.dashboard')}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna alla dashboard</a>
-                    <a href="{{ route('admin.restaurants.create') }}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-house-user me-2"></i>Aggiungi ristorante</a>
+                    {{-- <a href="{{ route('admin.restaurants.create') }}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-house-user me-2"></i>Aggiungi ristorante</a> --}}
                     @else
                     <a href="{{ route('admin.dashboard')}}" class="indietro btn text-white fw-semibold"><i class="fa-sharp fa-solid fa-arrow-left me-2"></i>Torna alla dashboard</a>
                     @endif

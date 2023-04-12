@@ -37,19 +37,19 @@
                                 <td>{{ $order->nome}} {{ $order->cognome}}</td>
                                 <td>{{ $order->indirizzo}}</td>
                                 <td>{{ $order->prezzo_totale}}</td>
-                                {{-- <td>
-                                    <a href="{{ route('admin.orders.show', $order->slug)}}" title="Visualizza" class="btn btn-sm btn-square btn-primary">
+                                <td>
+                                    <a href="{{ route('admin.orders.show', $order->slug)}}" title="Visualizza" class="btn btn-sm btn-square btn-warning">
                                         <i class="fas fa-eye text-black"></i>
                                     </a>
-                                    <a href="{{ route('admin.orders.edit', $order->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
+                                    {{-- <a href="{{ route('admin.orders.edit', $order->slug)}}" title="Modifica" class="btn btn-sm btn-square btn-warning">
                                         <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form class="d-inline-block" method="POST" action="{{route('admin.orders.destroy', ['order' => $order['slug']])}}">
+                                    </a> --}}
+                                    {{-- <form class="d-inline-block" method="POST" action="{{route('admin.orders.destroy', ['order' => $order['slug']])}}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-square btn-danger confirm-delete-button m-1" data-title="{{$order->nome}}"><i class="fas fa-trash" ></i></button>
-                                    </form>
-                                </td> --}}
+                                    </form> --}}
+                                </td>
                             </tr>
                         @empty
                             {{-- <tr>

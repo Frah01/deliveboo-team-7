@@ -27,7 +27,7 @@
                 @endif
                 <div class="card-body">
                   <h5 class="card-title">{{$dish->nome}}</h5>
-                  <p class="card-text"><span class="fw-semibold">Prezzo: </span>{{$dish->prezzo}}</p>
+                  <p class="card-text"><span class="fw-semibold">Prezzo: </span>{{$dish->prezzo}} &euro;</p>
                   <p class="card-text"><span class="fw-semibold">Ingredienti: </span>{{$dish->ingredienti}}</p>
                   <p class="card-text"><span class="fw-semibold">Tipologia: </span>{{$dish->tipologia}}</p>
                 </div>

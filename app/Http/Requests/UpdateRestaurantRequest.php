@@ -25,7 +25,6 @@ class UpdateRestaurantRequest extends FormRequest
     {
         return [
             'nome' => ['required',Rule::unique('restaurants')->ignore($this->restaurant),'min:3', 'max:100'],
-            'slug' => ['required'],
             'telefono' => ['nullable','min:10', 'max:13'],
             'immagine' => ['nullable' , 'image'],
             'email' => ['required','email:@', 'max:50'],
@@ -41,13 +40,12 @@ class UpdateRestaurantRequest extends FormRequest
             'nome.unique' => 'Un ristorante con lo stesso nome è già presente nella pagina!',
             'nome.max' => 'Il nome può avere massimo 100 caratteri!',
             'nome.min' => 'Il nome deve avere almeno 3 caratteri',
-            'slug.required' => 'Inserisci uno slug per il progetto!',
             'immagine.image' => 'Inserire un formato di file valido!',
             'telefono.max' => 'Il numero può essere di massimo 13 caratteri!',
             'telefono.min' => 'Il numero deve avere almeno 10  caratteri!',
             'email.max' => 'La mail può essere di massimo 50 caratteri!',
-            'email.required'=>'mail obbligatoria',
-            'email.email'=>'mail non valida',
+            'email.required'=>'Inserisci una email',
+            'email.email'=>'Email non valida',
             'indirizzo.required' => 'Inserisci un indirizzo al ristorante!',
             'indirizzo.max' => 'L\'indirizzo può avere massimo 100 caratteri!',
             'indirizzo.max' => 'L\'indirizzo deve avere almeno 3 caratteri!',

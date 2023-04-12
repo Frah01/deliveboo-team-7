@@ -86,7 +86,7 @@ class RestaurantController extends Controller
         if($user->id == $restaurant->user_id || $user->id == 1)
             return view('admin.restaurants.show', compact('restaurant'));
         else
-            return redirect()->route('admin.restaurants.index')->with('warning', 'Non puoi visualizzare i post di un altro utente');
+            return redirect()->route('admin.restaurants.show')->with('warning', 'Non puoi visualizzare i post di un altro utente');
     }
 
     /**
