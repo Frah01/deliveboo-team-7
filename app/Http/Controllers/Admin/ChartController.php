@@ -21,7 +21,6 @@ class ChartController extends Controller
             ->groupBy(DB::raw("date_name"), DB::raw("restaurant_id"))
             ->orderBy('date_name', 'ASC')
             ->pluck('price', 'date_name');
-        dd($order);
         $labels = $order->keys();
         $data = $order->values();
         return view('admin.chart', compact('labels', 'data'));
