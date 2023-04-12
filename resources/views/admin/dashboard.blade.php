@@ -165,7 +165,6 @@
                        </a>
                    </div>
                </div>
-               
            </div>
            @else
        
@@ -179,7 +178,7 @@
                         </a> 
                     </div>
               </div>
-               <div class="col-6">
+               <div class="col-4">
                    <div class="card-dashboard" >
                        <img src="https://cdn-icons-png.flaticon.com/128/1980/1980832.png" alt="">
                        <h2 class="titolo-card">Il tuo Menù </h2>
@@ -189,7 +188,7 @@
                        </a>
                    </div>
                </div>
-               <div class="col-6">
+               <div class="col-4">
                    <div class="card-dashboard">
                     <img src="https://cdn-icons-png.flaticon.com/128/3081/3081144.png" alt="">
                     <h2 class="titolo-card">I tuoi Ordini </h2>
@@ -199,6 +198,16 @@
                        </a>
                    </div>
                </div>
+               <div class="col-4">
+                <div class="card-dashboard" >
+                 <img src="https://cdn-icons-png.flaticon.com/128/4082/4082738.png" alt="">
+                 <h2 class="titolo-card">Statistiche</h2>
+                 <p>Qui potrai visualizzare tutte le statistiche degli ordini</p>
+                    <a href="{{route('admin.chart')}}">
+                     <button class="bottone-cards">Visualizza Statistiche</button>
+                    </a>
+                </div>
+            </div>
            </div>
        
            @endif

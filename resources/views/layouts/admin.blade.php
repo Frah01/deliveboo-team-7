@@ -12,6 +12,9 @@
     
     <title>Deliveboo</title>
 
+    <!-- Grafico -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
